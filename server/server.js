@@ -2,6 +2,7 @@ const express = require("express")
 const app = express()
 const mongodb = require('mongodb').MongoClient
 const url = "mongodb://it2810-09.idi.ntnu.no:27017/"
+const apiPort = 8080
 
 app.get('/', function(req, res) {
     mongodb.connect(url, function(err, db) {
@@ -17,4 +18,4 @@ app.get('/', function(req, res) {
 
 
 
-app.listen(8080) 
+app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`))
