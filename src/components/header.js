@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import '../App.css';
+import logo from '../brad.png';
 
 class Header extends Component{
     constructor(props){
@@ -12,8 +13,9 @@ class Header extends Component{
     render(){
         return (
         <div className='Header'>
-            <span className="firstHeader" style={{"fontSize" : "23px"}}>WELCOME</span>
-            
+            <img src={logo} className="App-logo" alt="logo" />
+            <span className="firstHeader" style={{"fontSize" : "23px"}}>Velkommen til Digghetsbarometeret</span>
+            <img src={logo} className="App-logo" alt="logo" />
         </div>
         );
     };
