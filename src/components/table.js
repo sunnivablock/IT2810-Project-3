@@ -20,7 +20,6 @@ const rows = [
   createData(8, "Channing", "Tatum", 1985),
   createData(8.5, "David", "Beckham", 1979),
   createData(7, "Johnny", "Depp", 1974),
-  createData(10, "Chris", "Hemsworth", 1987),
 ];
 
 
@@ -66,12 +65,7 @@ function EnhancedTableHead(props) {
     <TableHead>
       <TableRow>
         {headCells.map(headCell => (
-          <TableCell
-            key={headCell.id}
-            align={headCell.numeric ? 'right' : 'left'}
-            padding={headCell.disablePadding ? 'none' : 'default'}
-            sortDirection={orderBy === headCell.id ? order : false}
-          >
+          <TableCell>
             <TableSortLabel
               active={orderBy === headCell.id}
               direction={order}
@@ -167,10 +161,10 @@ export default function EnhancedTable() {
 
                   return (
                     <TableRow>
-                      <TableCell align="right">{row.digghet}</TableCell>
-                      <TableCell align="right">{row.fornavn}</TableCell>
-                      <TableCell align="right">{row.etternavn}</TableCell>
-                      <TableCell align="right">{row.fodt}</TableCell>
+                      <TableCell align="left">{row.digghet}</TableCell>
+                      <TableCell align="left">{row.fornavn}</TableCell>
+                      <TableCell align="left">{row.etternavn}</TableCell>
+                      <TableCell align="left">{row.fodt}</TableCell>
                     </TableRow>
                   );
                 })}
