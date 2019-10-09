@@ -5,8 +5,7 @@ import logo from '../brad.png';
 class Header extends Component{
     constructor(props){
         super(props);
-        this.state = {
-            
+        this.state = {  
         };
         
          };
