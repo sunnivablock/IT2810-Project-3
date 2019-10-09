@@ -4,6 +4,11 @@ import './App.css';
 import Table from './components/table'
 import Header from './components/header'
 
+/*const express = require('express');
+const app = express();
+const apiPort = 8080;*/
+
+
 
 function App() {
   return (
@@ -20,3 +25,6 @@ function App() {
 }
 
 export default App;
+
+
+/*app.listen(apiPort, () => console.log('Server running on port ${apiPort}'));*/
