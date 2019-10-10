@@ -49,13 +49,11 @@ var actor = mongoose.model('actor', dataSchema);
   // 'actors' contains the list of persons that match the criteria.
 })*/
 
-app.get('/', function(req, res) {
-    actor.find({ 'profession': 'actor' }, function (err, actors) {
-        if (err) return handleError(err);
-        console.log(actors)
-        // 'actors' contains the list of persons that match the criteria.
-      })
-      res.send("asda")
+app.get('/actors', async function(req, res) {
+  const actors = await actor.find({ 'profession': 'actor' });
+  if(actor) {
+    res.send(actors)
+  }
 })
 
 app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`))
