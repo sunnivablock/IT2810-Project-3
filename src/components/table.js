@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { lighten, makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -8,6 +8,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Paper from '@material-ui/core/Paper';
+import TablePagination from '@material-ui/core/TablePagination';
 
 
 function createData(digghet, fornavn, etternavn, fodt) {
@@ -20,6 +21,16 @@ const rows = [
   createData(8, "Channing", "Tatum", 1985),
   createData(8.5, "David", "Beckham", 1979),
   createData(7, "Johnny", "Depp", 1974),
+  createData(1, "Chris", "Hemsworth", 1987),
+  createData(2, "Brad", "Pitt", 1972),
+  createData(3, "Channing", "Tatum", 1985),
+  createData(3.5, "David", "Beckham", 1979),
+  createData(5, "Johnny", "Depp", 1974),
+  createData(8.9, "Chris", "Hemsworth", 1987),
+  createData(2.3, "Brad", "Pitt", 1972),
+  createData(2.5, "Channing", "Tatum", 1985),
+  createData(2.7, "David", "Beckham", 1979),
+  createData(7.3, "Johnny", "Depp", 1974),
 ];
 
 
@@ -48,10 +59,10 @@ function getSorting(order, orderBy) {
 }
 
 const headCells = [
-  { id: 'digghet', numeric: true,  label: 'Digghetsfaktor' },
-  { id: 'fornavn', numeric: false,  label: 'Fornavn' },
-  { id: 'etternavn', numeric: false, label: 'Etternavn' },
-  { id: 'fodt', numeric: true,  label: 'Født' },
+  { id: 'digghet', numeric: true,  label: 'Digghetsfaktor'},
+  { id: 'fornavn', numeric: false,  label: 'Fornavn'},
+  { id: 'etternavn', numeric: false, label: 'Etternavn'},
+  { id: 'fodt', numeric: true,  label: 'Født'},
   
 ];
 
@@ -99,15 +110,16 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
     marginTop: theme.spacing(3),
   },
-  paper: {
-    width: '100%',
-    marginBottom: theme.spacing(2),
-  },
   table: {
     minWidth: 750,
   },
   tableWrapper: {
     overflowX: 'auto',
+    maxHeight:430,
+  },
+  paper: {
+    width: '100%',
+    marginBottom: theme.spacing(2),
   },
   visuallyHidden: {
     border: 0,
@@ -126,7 +138,9 @@ export default function EnhancedTable() {
   const classes = useStyles();
   const [order, setOrder] = React.useState('desc');
   const [orderBy, setOrderBy] = React.useState('digghet');
-  const [selected, setSelected] = React.useState([]);
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  
 
   const handleRequestSort = (event, property) => {
     const isDesc = orderBy === property && order === 'desc';
@@ -134,9 +148,15 @@ export default function EnhancedTable() {
     setOrderBy(property);
   };
 
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
 
+  const handleChangeRowsPerPage = event => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
 
-  const isSelected = name => selected.indexOf(name) !== -1;
 
 
   return (
@@ -145,7 +165,7 @@ export default function EnhancedTable() {
         <div className={classes.tableWrapper}>
           <Table
             className={classes.table}
-            aria-labelledby="tableTitle"
+            
           >
             <EnhancedTableHead
               classes={classes}
@@ -156,22 +176,36 @@ export default function EnhancedTable() {
             />
             <TableBody>
               {stableSort(rows, getSorting(order, orderBy))
-                .map((row, index) => {
-                  const isItemSelected = isSelected(row.name);
-
-                  return (
-                    <TableRow>
-                      <TableCell align="left">{row.digghet}</TableCell>
-                      <TableCell align="left">{row.fornavn}</TableCell>
-                      <TableCell align="left">{row.etternavn}</TableCell>
-                      <TableCell align="left">{row.fodt}</TableCell>
+              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .map((row, index) => {
+                return(
+                  <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+                        <TableCell align="left">{row.digghet}</TableCell>
+                        <TableCell align="left">{row.fornavn}</TableCell>
+                        <TableCell align="left">{row.etternavn}</TableCell>
+                        <TableCell align="left">{row.fodt}</TableCell>
                     </TableRow>
-                  );
-                })}
+                    );
+                  })}
               
             </TableBody>
           </Table>
         </div>
+          <TablePagination
+          rowsPerPageOptions={[5, 10, 50]}
+          component="div"
+          count={rows.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          backIconButtonProps={{
+            'aria-label': 'previous page',
+          }}
+          nextIconButtonProps={{
+            'aria-label': 'next page',
+          }}
+          onChangePage={handleChangePage}
+          onChangeRowsPerPage={handleChangeRowsPerPage}
+        />
       </Paper>
     </div>
   );
