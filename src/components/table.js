@@ -20,6 +20,7 @@ const rows = [
   createData(8, "Channing", "Tatum", 1985),
   createData(8.5, "David", "Beckham", 1979),
   createData(7, "Johnny", "Depp", 1974),
+  createData(1, "Donald", "Trump", 1960),
 ];
 
 
