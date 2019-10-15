@@ -1,4 +1,5 @@
 import React from 'react';
+import '../App.css'
 import PropTypes from 'prop-types';
 import {makeStyles} from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -19,18 +20,18 @@ const rows = [
   createData(10, "Chris", "Hemsworth", 1987),
   createData(9, "Brad", "Pitt", 1972),
   createData(8, "Channing", "Tatum", 1985),
-  createData(8.5, "David", "Beckham", 1979),
+  createData(11, "David", "Beckham", 1979),
   createData(7, "Johnny", "Depp", 1974),
   createData(1, "Chris", "Hemsworth", 1987),
   createData(2, "Brad", "Pitt", 1972),
   createData(3, "Channing", "Tatum", 1985),
-  createData(3.5, "David", "Beckham", 1979),
+  createData(12, "David", "Beckham", 1979),
   createData(5, "Johnny", "Depp", 1974),
-  createData(8.9, "Chris", "Hemsworth", 1987),
-  createData(2.3, "Brad", "Pitt", 1972),
-  createData(2.5, "Channing", "Tatum", 1985),
-  createData(2.7, "David", "Beckham", 1979),
-  createData(7.3, "Johnny", "Depp", 1974),
+  createData(13, "Chris", "Hemsworth", 1987),
+  createData(14, "Brad", "Pitt", 1972),
+  createData(15, "Channing", "Tatum", 1985),
+  createData(16, "David", "Beckham", 1979),
+  createData(17, "Johnny", "Depp", 1974),
 ];
 
 
@@ -66,8 +67,8 @@ const headCells = [
   
 ];
 
-function EnhancedTableHead(props) {
-  const { classes,  order, orderBy, onRequestSort } = props;
+function HeadOfTable(props) {
+  const {order, orderBy, onRequestSort } = props;
   const createSortHandler = property => event => {
     onRequestSort(event, property);
   };
@@ -84,7 +85,7 @@ function EnhancedTableHead(props) {
             >
               {headCell.label}
               {orderBy === headCell.id ? (
-                <span className={classes.visuallyHidden}>
+                <span className="visuallyHidden">
                   {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
                 </span>
               ) : null}
@@ -96,46 +97,15 @@ function EnhancedTableHead(props) {
   );
 }
 
-EnhancedTableHead.propTypes = {
-  classes: PropTypes.object.isRequired,
-  numSelected: PropTypes.number.isRequired,
+
+HeadOfTable.propTypes = {
   onRequestSort: PropTypes.func.isRequired,
   order: PropTypes.oneOf(['asc', 'desc']).isRequired,
   orderBy: PropTypes.string.isRequired,
 };
 
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    width: '100%',
-    marginTop: theme.spacing(3),
-  },
-  table: {
-    minWidth: 750,
-  },
-  tableWrapper: {
-    overflowX: 'auto',
-    maxHeight:430,
-  },
-  paper: {
-    width: '100%',
-    marginBottom: theme.spacing(2),
-  },
-  visuallyHidden: {
-    border: 0,
-    clip: 'rect(0 0 0 0)',
-    height: 1,
-    margin: -1,
-    overflow: 'hidden',
-    padding: 0,
-    position: 'absolute',
-    top: 20,
-    width: 1,
-  },
-}));
-
 export default function EnhancedTable() {
-  const classes = useStyles();
   const [order, setOrder] = React.useState('desc');
   const [orderBy, setOrderBy] = React.useState('digghet');
   const [page, setPage] = React.useState(0);
@@ -160,27 +130,27 @@ export default function EnhancedTable() {
 
 
   return (
-    <div className={classes.root}>
-      <Paper className={classes.paper}>
-        <div className={classes.tableWrapper}>
+    <div className="main">
+      <Paper className="paper">
+        <div className="tableWrapper">
           <Table
-            className={classes.table}
+            className="table"
             
           >
-            <EnhancedTableHead
-              classes={classes}
+            <HeadOfTable
+              //classes={classes}
               order={order}
               orderBy={orderBy}
               onRequestSort={handleRequestSort}
-              
             />
+
             <TableBody>
               {stableSort(rows, getSorting(order, orderBy))
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row, index) => {
                 return(
                   <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
-                        <TableCell align="left">{row.digghet}</TableCell>
+                        <TableCell align="left">{row.digghet} </TableCell>
                         <TableCell align="left">{row.fornavn}</TableCell>
                         <TableCell align="left">{row.etternavn}</TableCell>
                         <TableCell align="left">{row.fodt}</TableCell>
@@ -193,8 +163,8 @@ export default function EnhancedTable() {
         </div>
           <TablePagination
           rowsPerPageOptions={[5, 10, 50]}
-          component="div"
           count={rows.length}
+          component="div"
           rowsPerPage={rowsPerPage}
           page={page}
           backIconButtonProps={{
