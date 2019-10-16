@@ -1,14 +1,13 @@
 import React from 'react';
-import logo from './brad.png';
-import './App.css';
-import Table from './components/table'
-import Header from './components/header'
-import {useEffect} from 'react'
+import Table from './components/table';
+import Header from './components/header';
+import FormContainer from './components/FormContainer';
+import {useEffect} from 'react';
 
 
 
 function App() {
-    useEffect( () => {fetch("/actors/")
+    useEffect( () => {fetch("/persons/")
     .then(function(response) {
       return response.json();
     }).then(data => console.log(data))
@@ -17,12 +16,15 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Header/>
-      
+      </header>
+      <div className="mainContent">
         <div className="table1">
           <Table/>
         </div>
-      </header>
-      
+        <div className="formContainer">
+          <FormContainer/>
+        </div>
+      </div>
     </div>
   );
 }
