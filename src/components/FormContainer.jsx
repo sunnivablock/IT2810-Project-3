@@ -1,5 +1,7 @@
 import React, {Component} from 'react';  
 import '../App.css';
+import axios from 'axios';
+
 
 /* Import Components 
 These are our dumb components. They are stateless functional components. */
@@ -95,26 +97,22 @@ class FormContainer extends Component {
     }), () => console.log(this.state.newPerson))
   }
 
-  handleFormSubmit(e) {
-    // Form submission logic
+  handleFormSubmit = () => {
     e.preventDefault();
     let personData = this.state.newPerson;
-
-    fetch('/actors/',{ //URL til server, må finne ut hva ha her?
-        method: "POST",
-        body: JSON.stringify(personData),
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-      }).then(response => {
+    axios.post('/api/persons', JSON.stringify(personData))
+      .then(res => {
         response.json().then(data =>{
-          console.log("Successful" + data);
-        })
-    })
-  }  
+        console.log("Successful" + data);
+      })
+      })
+      .catch(err => {
+        return console.log(err);
+      })
+  }
+
   submitResponse(){
-    //console.log("Submit button pushed")
+    console.log("Submit button pushed")
   }
 
   handleClearForm(e) {
@@ -122,7 +120,7 @@ class FormContainer extends Component {
     e.preventDefault(); //prevents the page from being refreshed on form submission, which is the default form behavior.
     this.setState({ 
       newPerson: {
-        name: '',
+        //name: '',
         firstName: '',
         lastName: '',
         profession: '',
@@ -177,6 +175,7 @@ render() {
           action = {this.handleFormSubmit}
           type = {'primary'} 
           title = {'Submit'} 
+          onClick = {this.submitResponse}
           style={buttonStyle}/> { /*Submit */ }
       
         <Button 
@@ -211,3 +210,37 @@ export default FormContainer;
                 placeholder = {'Enter your name'}
                 handleChange = {this.handleInput}
                 /> {/* Name of the user */
+
+                    /*handleFormSubmit(e) {
+    e.preventDefault();
+    let personData = this.state.newPerson;
+
+    fetch('/api/persons',{ //URL til server, må finne ut hva ha her?
+        method: "POST",
+        body: JSON.stringify(personData),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+      }).then(response => {
+        response.json().then(data =>{
+          console.log("Successful" + data);
+        })
+    })
+  }  */
+
+  /*
+formHandler(newPerson) {
+  // Form submission logic
+  axios.post('/api/register', newPerson)
+  .then(function(response){
+    console.log(response);
+    //Perform action based on response
+  })
+  .catch(function(error){
+    console.log(error);
+    //Perform action based on error
+  });
+ }
+ // i form i render må dette stå: onSubmit={this.handleFormSubmit(this.state.newPerson)}
+*/

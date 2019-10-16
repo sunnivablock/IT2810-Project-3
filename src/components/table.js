@@ -10,18 +10,18 @@ import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Paper from '@material-ui/core/Paper';
 
 
-function createData(digghet, fornavn, etternavn, fodt) {
+createData(digghet, fornavn, etternavn, fodt) {
   return { digghet, fornavn, etternavn, fodt};
-}
+  }
 
-const rows = [
-  createData(10, "Chris", "Hemsworth", 1987),
-  createData(9, "Brad", "Pitt", 1972),
-  createData(8, "Channing", "Tatum", 1985),
-  createData(8.5, "David", "Beckham", 1979),
-  createData(7, "Johnny", "Depp", 1974),
-  createData(1, "Donald", "Trump", 1960),
-];
+let rows = [
+    createData(10, "Chris", "Hemsworth", 1987),
+    createData(9, "Brad", "Pitt", 1972),
+    createData(8, "Channing", "Tatum", 1985),
+    createData(8.5, "David", "Beckham", 1979),
+    createData(7, "Johnny", "Depp", 1974),
+    createData(1, "Donald", "Trump", 1960),
+  ];
 
 
 function desc(a, b, orderBy) {
@@ -177,3 +177,6 @@ export default function EnhancedTable() {
     </div>
   );
 }
+}
+
+export default Table;

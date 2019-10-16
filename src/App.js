@@ -7,7 +7,7 @@ import {useEffect} from 'react';
 
 
 function App() {
-    useEffect( () => {fetch("/actors/")
+    useEffect( () => {fetch("/persons/")
     .then(function(response) {
       return response.json();
     }).then(data => console.log(data))
