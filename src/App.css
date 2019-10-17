@@ -101,3 +101,29 @@
   display: flex;
   flex-direction: row;
 }
+
+.main {
+  width: '100%';
+  margin-top: "3px";
+}
+
+.table {
+  min-Width: 750;
+}
+
+.tableWrapper {
+  overflow-X: auto;
+  max-Height:430;
+}
+
+.paper {
+  width: '100%';
+  margin-bottom: "2px";
+}
+
+.visuallyHidden {
+  border: 0;
+  clip: rect(0px, 0px, 0px, 0px);
+  overflow: hidden;
+  position: absolute;
+}

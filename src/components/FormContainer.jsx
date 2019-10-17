@@ -17,7 +17,6 @@ class FormContainer extends Component {
 
     this.state = {
       newPerson: {
-        name: '',
         firstName: '',
         lastName: '',
         profession: '',
@@ -33,20 +32,20 @@ class FormContainer extends Component {
     this.handleLastName = this.handleLastName.bind(this);
     this.handleProfession = this.handleProfession.bind(this);
     this.handleInput = this.handleInput.bind(this);
-    this.handleFullName = this.handleFullName.bind(this);
+    //this.handleFullName = this.handleFullName.bind(this);
     this.handleRating = this.handleRating.bind(this);
     //this.handleTextArea = this.handleTextArea.bind(this);
   }
 
   /* This life cycle hook gets executed when the component mounts */
   
-  handleFullName(e) {
+  /*handleFullName(e) {
     let value = e.target.value;
     this.setState( prevState => ({ newPerson : 
          {...prevState.newPerson, name: value
          }
        }), () => console.log(this.state.newPerson))
-   }
+   }*/
 
   handleFirstName(e) {
     let value = e.target.value;
@@ -100,14 +99,15 @@ class FormContainer extends Component {
   handleFormSubmit = () => {
     //e.preventDefault();
     let personData = this.state.newPerson;
-    axios.post('/api/persons', JSON.stringify(personData))
+    console.log(personData)
+    axios.post('http://localhost:8000/api/persons', personData)
       .then(response => {
         response.then(data =>{
         console.log("Successful" + data);
       })
       })
       .catch(err => {
-        return console.log(err);
+        return console.log(err+'Could not post to db.');
       })
   }
 
@@ -132,7 +132,7 @@ class FormContainer extends Component {
 
 render() {
   return (
-      <form className="formContainer" onSubmit={this.handleFormSubmit} onClick={this.submitResponse}>
+      <form className="formContainer">
         <h2>Legg til ny person</h2>
         
         <Input inputType={'text'}
@@ -194,6 +194,9 @@ margin : '10px 10px 10px 10px'
 }
 
 export default FormContainer;
+
+
+
 // {/* Gender Selection */} Midlertidig utkodet, er en nedrullings-liste
 
 /*<Input inputType={'number'} 

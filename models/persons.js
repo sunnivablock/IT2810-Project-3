@@ -9,16 +9,12 @@ mongoose.set('useUnifiedTopology', true);
 
 // this will be our data base's data structure 
 const dataSchema = new Schema({
-    personsInDatabase: {
-        id: Number,
-        firstName: String,
-        lastName: String,
-        profession: String,
-        year: String,
-        rating: String
-    }
-  },
-  { timestamp: true, collection : 'Krutt' },
+    firstName: String,
+    lastName: String,
+    profession: String,
+    year: String,
+    rating: String},
+  { timestamp: true, collection : 'Krutt' }
 );
 
 // export the new Schema so we could modify it using Node.js

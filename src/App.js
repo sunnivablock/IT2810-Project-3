@@ -2,16 +2,16 @@ import React from 'react';
 import Table from './components/table';
 import Header from './components/header';
 import FormContainer from './components/FormContainer';
-import {useEffect} from 'react';
+//import {useEffect} from 'react';
 
 
 
 function App() {
-    useEffect( () => {fetch("/persons/")
+    /*useEffect( () => {fetch("/persons/")
     .then(function(response) {
       return response.json();
     }).then(data => console.log(data))
-  }, [])
+  }, [])*/
   return (
     <div className="App">
       <header className="App-header">

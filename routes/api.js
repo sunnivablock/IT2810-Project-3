@@ -12,15 +12,15 @@ router.get('/persons', (req, res, next) => {
 });
 
 router.post('/persons', (req, res, next) => {
-    if(req.body.action){
+  console.log(req.body)
+    if(req.body){
         Person.create(req.body)
-          .then(data => res.json(data))
-          .catch(next)
       }else {
         res.json({
-          error: "Something went wrong, but I like to keep it vague, so you don't know exactly what."
+          error: "Something went wrong"
         })
       }
+      next()
 });
 
 //Must add functionality for deleting later
