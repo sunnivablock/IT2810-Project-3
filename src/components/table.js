@@ -9,30 +9,16 @@ import TableRow from '@material-ui/core/TableRow';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Paper from '@material-ui/core/Paper';
 import TablePagination from '@material-ui/core/TablePagination';
+import getActors, {rows} from './data';
 
 
-function createData(digghet, fornavn, etternavn, fodt) {
-  return { digghet, fornavn, etternavn, fodt};
-}
-
-const rows = [
-  createData(10, "Chris", "Hemsworth", 1987),
-  createData(9, "Brad", "Pitt", 1972),
-  createData(8, "Channing", "Tatum", 1985),
-  createData(11, "David", "Beckham", 1979),
-  createData(7, "Johnny", "Depp", 1974),
-  createData(1, "Chris", "Hemsworth", 1987),
-  createData(2, "Brad", "Pitt", 1972),
-  createData(3, "Channing", "Tatum", 1985),
-  createData(12, "David", "Beckham", 1979),
-  createData(5, "Johnny", "Depp", 1974),
-  createData(13, "Chris", "Hemsworth", 1987),
-  createData(14, "Brad", "Pitt", 1972),
-  createData(15, "Channing", "Tatum", 1985),
-  createData(16, "David", "Beckham", 1979),
-  createData(17, "Johnny", "Depp", 1974),
-];
-
+/*
+constructor = (props) => {
+  const {fetchActors}=this.props;
+  fetchActors()
+  const { error, actors ,pending} = this.props;
+  console.log(actors)
+}*/
 
 function desc(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -67,6 +53,8 @@ const headCells = [
 ];
 
 
+
+
 function HeadOfTable(props) {
   const {order, orderBy, onRequestSort } = props;
   const createSortHandler = property => event => {
@@ -96,6 +84,8 @@ function HeadOfTable(props) {
     </TableHead>
   );
 }
+
+
 
 
 HeadOfTable.propTypes = {
@@ -142,7 +132,7 @@ export default function EnhancedTable() {
             />
 
             <TableBody>
-              {stableSort(rows, getSorting(order, orderBy))
+              {stableSort(getActors(), getSorting(order, orderBy))
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row, index) => {
                 return(
