@@ -12,14 +12,6 @@ import TablePagination from '@material-ui/core/TablePagination';
 import getActors, {rows} from './data';
 
 
-/*
-constructor = (props) => {
-  const {fetchActors}=this.props;
-  fetchActors()
-  const { error, actors ,pending} = this.props;
-  console.log(actors)
-}*/
-
 function desc(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
     return -1;
@@ -125,7 +117,7 @@ export default function EnhancedTable() {
             className="table"
           >
             <HeadOfTable
-              //classes={classes}
+
               order={order}
               orderBy={orderBy}
               onRequestSort={handleRequestSort}
@@ -149,7 +141,7 @@ export default function EnhancedTable() {
         </div>
           <TablePagination
           rowsPerPageOptions={[5, 10, 50]}
-          count={rows.length}
+          count={rows}
           component="div"
           rowsPerPage={rowsPerPage}
           page={page}
