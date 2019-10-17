@@ -20,3 +20,32 @@
 .App-link {
   color: #09d3ac;
 }
+
+.Header{
+  display:flex;
+  flex-direction: row;
+}
+
+.firstHeader{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.row{
+  color: white !important;
+  background: #8c8d91;
+  text-size-adjust: "h1";
+}
+
+.subRow{
+  color: white !important;
+  background: #a2a3a5;
+  text-size-adjust: "h1";
+}
+
+.table1{
+  margin: 5rem;
+
+}
