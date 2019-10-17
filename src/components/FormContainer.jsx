@@ -2,12 +2,9 @@ import React, {Component} from 'react';
 import '../App.css';
 import axios from 'axios';
 
-
-/* Import Components 
-These are our dumb components. They are stateless functional components. */
+/* Import Components; These are our dumb components. They are stateless functional components. */
 import Button from './Button';
 import Input from './Input'; 
-//import { fontFamily } from '@material-ui/system';
 import Select from './Select';
 
 
@@ -32,20 +29,10 @@ class FormContainer extends Component {
     this.handleLastName = this.handleLastName.bind(this);
     this.handleProfession = this.handleProfession.bind(this);
     this.handleInput = this.handleInput.bind(this);
-    //this.handleFullName = this.handleFullName.bind(this);
     this.handleRating = this.handleRating.bind(this);
-    //this.handleTextArea = this.handleTextArea.bind(this);
   }
 
   /* This life cycle hook gets executed when the component mounts */
-  
-  /*handleFullName(e) {
-    let value = e.target.value;
-    this.setState( prevState => ({ newPerson : 
-         {...prevState.newPerson, name: value
-         }
-       }), () => console.log(this.state.newPerson))
-   }*/
 
   handleFirstName(e) {
     let value = e.target.value;
@@ -97,7 +84,6 @@ class FormContainer extends Component {
   }
 
   handleFormSubmit = () => {
-    //e.preventDefault();
     let personData = this.state.newPerson;
     console.log(personData)
     axios.post('http://localhost:8000/api/persons', personData)
@@ -120,7 +106,6 @@ class FormContainer extends Component {
     e.preventDefault(); //prevents the page from being refreshed on form submission, which is the default form behavior.
     this.setState({ 
       newPerson: {
-        //name: '',
         firstName: '',
         lastName: '',
         profession: '',
@@ -133,7 +118,7 @@ class FormContainer extends Component {
 render() {
   return (
       <form className="formContainer">
-        <h2>Legg til ny person</h2>
+        <h2 className='formHeader'>ADD NEW PERSON</h2>
         
         <Input inputType={'text'}
           title= {'First name '} 
@@ -195,55 +180,3 @@ margin : '10px 10px 10px 10px'
 
 export default FormContainer;
 
-
-
-// {/* Gender Selection */} Midlertidig utkodet, er en nedrullings-liste
-
-/*<Input inputType={'number'} 
-              name={'rating'}
-              title= {'Rating '} 
-              value={this.state.newPerson.rating} 
-              placeholder = {'Rating'}
-              handleChange={this.handleRating} /> {/* Rating */
-              
-/*<Input inputType={'text'}
-                title= {'Full Name '} 
-                name= {'name'}
-                value={this.state.newPerson.name} 
-                placeholder = {'Enter your name'}
-                handleChange = {this.handleInput}
-                /> {/* Name of the user */
-
-                    /*handleFormSubmit(e) {
-    e.preventDefault();
-    let personData = this.state.newPerson;
-
-    fetch('/api/persons',{ //URL til server, må finne ut hva ha her?
-        method: "POST",
-        body: JSON.stringify(personData),
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-      }).then(response => {
-        response.json().then(data =>{
-          console.log("Successful" + data);
-        })
-    })
-  }  */
-
-  /*
-formHandler(newPerson) {
-  // Form submission logic
-  axios.post('/api/register', newPerson)
-  .then(function(response){
-    console.log(response);
-    //Perform action based on response
-  })
-  .catch(function(error){
-    console.log(error);
-    //Perform action based on error
-  });
- }
- // i form i render må dette stå: onSubmit={this.handleFormSubmit(this.state.newPerson)}
-*/
