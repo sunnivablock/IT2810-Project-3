@@ -5,6 +5,9 @@ import Table from './components/table'
 import Header from './components/header'
 //import {useEffect} from 'react'
 
+import getActors2 from './components/data.js';
+
+
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -19,7 +22,7 @@ import FormContainer from './components/FormContainer'
 class App extends Component {
   constructor(props){
     super(props);
-
+    console.log("hei")
     this.shouldComponentRender=this.shouldComponentRender.bind(this);
   }
 
@@ -43,6 +46,8 @@ class App extends Component {
     
       const { error, actors ,pending} = this.props;
       if(!this.shouldComponentRender()) return (<div>Appen laster ikke</div>)
+
+      getActors2()
 
       return (
         console.log(actors),

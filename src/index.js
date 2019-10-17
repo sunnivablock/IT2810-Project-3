@@ -8,7 +8,9 @@ import {Provider} from 'react-redux';
 import { applyMiddleware, createStore, compose } from 'redux';
 import reducer from './reducers/index'
 import initialState from './reducers/reducer'
+import store from './store/index.js'
 
+/*
 const middlewares= [thunk];
 
 
@@ -19,7 +21,7 @@ const store = createStore(reducer,
     composeEnhancers(
     applyMiddleware(...middlewares)
     ));
-
+*/
 
 render(
     <Provider store={store}>
