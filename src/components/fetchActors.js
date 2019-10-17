@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React from 'react';
 
 import {fetchActorsPending, fetchActorsSuccess, fetchActorsError} from '../actions/index'
 
@@ -11,8 +11,8 @@ function fetchActors() {
             if(res.error) {
                 throw(res.error);
             }
-            dispatch(fetchActorsSuccess(res.actors));
-            return res.actors;
+            dispatch(fetchActorsSuccess(res));
+           // return res.actors;
         })
         .catch(error => {
             dispatch(fetchActorsError(error));

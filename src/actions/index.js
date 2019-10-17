@@ -14,7 +14,7 @@ export function fetchActorsPending() {
 export function fetchActorsSuccess(actors) {
     return {
         type: FETCH_ACTORS_SUCCESS,
-        actors: actors
+        payload: actors
     }
 }
 

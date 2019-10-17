@@ -1,16 +1,15 @@
-
-
-import { applyMiddleware, createStore } from 'redux';
+/*import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
-
-import rootReducer from './rootReducer';
-import initialState from './initialState';
-
-import { App } from './App'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import initialState from '../reducers/index';
+import  App  from '../App';
 
 const middlewares = [thunk];
 
-const store= createStore(rootReducer, initialState, applyMiddleware(...middlewares));
+
+const store= createStore( initialState, applyMiddleware(...middlewares));
 
 ReactDOM.render(
   <Provider store={store}>
@@ -20,3 +19,4 @@ ReactDOM.render(
 )
 
 
+*/
