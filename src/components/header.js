@@ -14,7 +14,7 @@ class Header extends Component{
         return (
         <div className='Header'>
             <img src={logo} className="App-logo" alt="logo" />
-            <span className="firstHeader" style={{"fontSize" : "23px"}}>Velkommen til Digghetsbarometeret</span>
+            <span className="firstHeader" >BAROMETERET</span>
             <img src={logo} className="App-logo" alt="logo" />
         </div>
         );

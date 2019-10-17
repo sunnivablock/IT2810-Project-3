@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: #282c34;
 }
 
 .App-logo {
@@ -8,13 +9,22 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 30vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.test {
+  background-color: white;
+  min-height: 30vh;
+  display: flex;
+  flex-direction: column;
+  font-size: calc(10px + 2vmin);
+  color: black;
 }
 
 .App-link {
@@ -24,13 +34,31 @@
 .Header{
   display:flex;
   flex-direction: row;
+  padding-top: 3%;
 }
 
 .firstHeader{
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  letter-spacing: 6px;
+  margin-left: 4%;
+  margin-right: 4%;
+}
 
+.firstHeader:hover{
+  font-style: italic;
+}
+
+.mainContent{
+  display: flex;
+  margin-top: 50px;
+  justify-content: center;
+  justify-items: center;
+  background-color: #282c34;
+  flex-direction: row;
+  color: black;
 }
 
 .row{
@@ -46,6 +74,66 @@
 }
 
 .table1{
-  margin: 5rem;
+  width: 50%;
+  height: 30%;
+  background-color: #282c34;
+  margin: 10px;
+}
 
+.formContainer{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  line-height: 40px;
+  border-radius: 4px;
+  letter-spacing: 2px;
+  background-color: white;
+  font-style: #282c34;
+  vertical-align: top;
+  margin-top: 33px;
+  padding: 7px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3%;
+}
+
+.inputField{
+  padding: 10px;
+}
+
+.formButton{
+  height: 20px;
+  width: 60px;
+  padding: 10%;
+}
+
+.buttonWrap{
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.main {
+  width: '100%';
+  margin-top: "3px";
+}
+
+.table {
+  min-Width: 750;
+}
+
+.tableWrapper {
+  overflow-X: auto;
+  max-Height:430;
+}
+
+.paper {
+  width: '100%';
+  margin-bottom: "2px";
+}
+
+.visuallyHidden {
+  border: 0;
+  clip: rect(0px, 0px, 0px, 0px);
+  overflow: hidden;
+  position: absolute;
 }
