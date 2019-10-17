@@ -11,6 +11,7 @@ import { bindActionCreators } from 'redux';
 import fetchActorsAction from './components/fetchActors'
 import {getActorsError, getActors, getActorsPending} from './reducers/reducer'
 import fetchActors from './components/fetchActors';
+import FormContainer from './components/FormContainer'
 //import store from './index'
 
 
@@ -34,22 +35,17 @@ class App extends Component {
       return true;
 }
 
-/*
-useEffect( () => {fetch("/actors/")
-.then(function(response) {
-  return response.json();
-}).thendata => console.log(data))
-}, [])*/
-  
+
 
   render() {
     console.log("Starter")
       
-    console.log(this.props.actors)
+    
       const { error, actors ,pending} = this.props;
       if(!this.shouldComponentRender()) return (<div>Appen laster ikke</div>)
 
       return (
+        console.log(actors),
           <div>
             <div className="test">
             {actors && actors.map(actor => <h1>{actor.firstName}</h1>)}
@@ -58,8 +54,13 @@ useEffect( () => {fetch("/actors/")
               <div className="App">
               <header className="App-header">
                 <Header/>
-                <div className="table1">
-                  <Table/>
+                <div className="mainContent">
+                  <div className="table1">
+                    <Table/>
+                  </div>
+                  <div className="formContainer">
+                    <FormContainer/>
+                  </div>
                 </div>
               </header>
             </div>
@@ -71,10 +72,10 @@ useEffect( () => {fetch("/actors/")
 
 
 const mapStateToProps = state => ({
-  actors: state.actors.actors
-//error: getActorsError(state),
+  actors: state.actors.actors,
+  error: getActorsError(state),
 //actors: state.actors,
-//pending: getActorsPending(state)
+  pending: getActorsPending(state)
  
 })
 
@@ -106,8 +107,10 @@ export default connect(
         <div className="table1">
           <Table/>
         </div>
-      </header>
-      
+        <div className="formContainer">
+          <FormContainer/>
+        </div>
+      </div>
     </div>
   );
 }*/

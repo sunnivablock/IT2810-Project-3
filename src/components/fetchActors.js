@@ -5,7 +5,7 @@ import {fetchActorsPending, fetchActorsSuccess, fetchActorsError} from '../actio
 function fetchActors() {
     return dispatch => {
         dispatch(fetchActorsPending());
-        fetch('/actors/')
+        fetch('/api/persons/')
         .then(res => res.json())
         .then(res => {
             if(res.error) {
