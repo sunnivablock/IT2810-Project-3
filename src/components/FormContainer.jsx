@@ -98,11 +98,11 @@ class FormContainer extends Component {
   }
 
   handleFormSubmit = () => {
-    e.preventDefault();
+    //e.preventDefault();
     let personData = this.state.newPerson;
     axios.post('/api/persons', JSON.stringify(personData))
-      .then(res => {
-        response.json().then(data =>{
+      .then(response => {
+        response.then(data =>{
         console.log("Successful" + data);
       })
       })

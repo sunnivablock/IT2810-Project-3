@@ -10,9 +10,9 @@ import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Paper from '@material-ui/core/Paper';
 
 
-createData(digghet, fornavn, etternavn, fodt) {
+createData(digghet, fornavn, etternavn, fodt){ 
   return { digghet, fornavn, etternavn, fodt};
-  }
+}
 
 let rows = [
     createData(10, "Chris", "Hemsworth", 1987),
