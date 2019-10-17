@@ -12,7 +12,7 @@ function fetchActors() {
                 throw(res.error);
             }
             dispatch(fetchActorsSuccess(res));
-           // return res.actors;
+           return res.actors;
         })
         .catch(error => {
             dispatch(fetchActorsError(error));

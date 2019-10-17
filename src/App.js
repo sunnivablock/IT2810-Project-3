@@ -45,12 +45,15 @@ useEffect( () => {fetch("/actors/")
   render() {
     console.log("Starter")
       
+    console.log(this.props.actors)
       const { error, actors ,pending} = this.props;
       if(!this.shouldComponentRender()) return (<div>Appen laster ikke</div>)
 
       return (
           <div>
-            {console.log(actors)}
+            <div className="test">
+            {actors && actors.map(actor => <h1>{actor.firstName}</h1>)}
+            </div>
               {error && <span >{error}</span>}
               <div className="App">
               <header className="App-header">
@@ -68,14 +71,11 @@ useEffect( () => {fetch("/actors/")
 
 
 const mapStateToProps = state => ({
-
-  error: getActorsError(state),
-  actors: getActors(state),
-  pending: getActorsPending(state)
-  /*
-  error: getActorsError(state),
-  actors: getActors(state),
-  pending: getActorsPending(state)*/
+  actors: state.actors.actors
+//error: getActorsError(state),
+//actors: state.actors,
+//pending: getActorsPending(state)
+ 
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
