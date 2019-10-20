@@ -17,7 +17,7 @@ function createData(digghet, fornavn, etternavn, fodt) {
     })
 
     //Want to use this rowcount instead of the constant outside function
-    console.log(rowCount)
+    
     return rows
   }
 

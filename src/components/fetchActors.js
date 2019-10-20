@@ -1,9 +1,9 @@
 import {fetchActorsPending, fetchActorsSuccess, fetchActorsError} from '../actions/index'
 
-function fetchActors() {
+function fetchActors(url) {
     return dispatch => {
         dispatch(fetchActorsPending());
-        fetch('/api/persons/')
+        fetch(url)
         .then(res => res.json())
         .then(res => {
             if(res.error) {
