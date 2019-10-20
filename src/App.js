@@ -8,6 +8,8 @@ import { bindActionCreators } from 'redux';
 import fetchActorsAction from './components/fetchActors'
 import {getActorsError, getActorsPending} from './reducers/reducer'
 import FormContainer from './components/FormContainer'
+import GraphContainer from './components/graphChart/GraphContainer'
+//var GraphContainer = require("./components/GraphContainer");
 
 class App extends Component {
   constructor(props){
@@ -42,6 +44,9 @@ class App extends Component {
                   </div>
                   <div className="formContainer">
                     <FormContainer/>
+                  </div>
+                  <div className="graphContainer">
+                    <GraphContainer/>
                   </div>
                 </div>
               </header>

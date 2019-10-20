@@ -175,7 +175,7 @@ render() {
 }
 
 const buttonStyle = {
-margin : '10px 10px 10px 10px'
+margin : '5px 5px 5px 5px'
 }
 
 export default FormContainer;
