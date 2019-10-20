@@ -3,6 +3,7 @@ import './App.css';
 import Table from './components/table'
 import Header from './components/header'
 import getActors2 from './components/data.js';
+import getHotList from './components/graphChart/fillGraph'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import fetchActorsAction from './components/fetchActors'
@@ -10,6 +11,7 @@ import {getActorsError, getActorsPending} from './reducers/reducer'
 import FormContainer from './components/FormContainer'
 import GraphContainer from './components/graphChart/GraphContainer'
 //var GraphContainer = require("./components/GraphContainer");
+
 
 class App extends Component {
   constructor(props){
@@ -21,8 +23,7 @@ class App extends Component {
 
   componentDidMount(){
     const {fetchActors}=this.props;
-    fetchActors('/api/persons/ratingASC');
-    
+    fetchActors('/api/persons/ratingDESC')
   }
 
   testFunksjon(url){
@@ -33,7 +34,7 @@ class App extends Component {
   shouldComponentRender(){
       if(this.pending === false) return false;
       return true;
-}
+  }
 
 
   render() {
@@ -44,6 +45,7 @@ class App extends Component {
      
 
       return (
+        getHotList(),
         //fetchActors('/api/persons/ratingASC'),
         console.log(fetchActors.actors),
           <div>
