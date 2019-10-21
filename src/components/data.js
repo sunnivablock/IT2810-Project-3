@@ -8,11 +8,9 @@ function createData(digghet, fornavn, etternavn, fodt) {
   export default function getActors() {
     const state= store.getState();
     let rows = []
-    let rowCount=0;
 
     state.actors.actors.map(actor => {
         rows.push(createData(actor.rating, actor.firstName, actor.lastName, actor.year))
-        rowCount++;
         return null //Needs to return something
     })
 

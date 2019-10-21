@@ -5,11 +5,13 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {Provider} from 'react-redux';
 import store from './store/index.js'
+import GraphContainer from './components/graphChart/GraphContainer'
 
 
 render(
     <Provider store={store}>
         <App />
+        <GraphContainer />
     </Provider>,
 document.getElementById('root'));
 
