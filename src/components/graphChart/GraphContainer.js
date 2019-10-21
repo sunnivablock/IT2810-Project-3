@@ -9,12 +9,11 @@ var Component = React.Component;
 class GraphContainer extends Component{
 
 	render() {
-		if(getHotList().length===0) return ("Hotlist Empty!!!!!")
+		if(getHotList().length===0) return (null)
 		
 		const options = {
 			animationEnabled: true,
 			backgroundColor: "white",
-			borderRadius: 2,
 			height: 300,
 			theme: "light2",
 			
