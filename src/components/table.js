@@ -9,7 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Paper from '@material-ui/core/Paper';
 import TablePagination from '@material-ui/core/TablePagination';
-import getActors, {rows} from './data';
+import getActors from './data';
 
 
 function desc(a, b, orderBy) {
@@ -141,7 +141,7 @@ export default function EnhancedTable() {
         </div>
           <TablePagination
           rowsPerPageOptions={[5, 10, 50]}
-          count={rows}
+          count={getActors().length}
           component="div"
           rowsPerPage={rowsPerPage}
           page={page}

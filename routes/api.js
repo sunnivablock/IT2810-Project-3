@@ -2,13 +2,33 @@ const express = require ('express');
 const router = express.Router();
 const Person = require('../models/persons');
 
-router.get('/persons', (req, res, next) => {
-    Person.find({})
-    //Person.find({}, {firstName:1, _id:0})
-    //Person.find({ 'profession': 'artist' })
-    //Person.find({}, 'personsInDatabase')
-    .then(data => res.json(data))
-    .catch(next)
+router.get('/persons', async (req, res, next) => {
+  //let lastName = {$regex : RegExp(req.query.lastName), $options : '-i'};
+  //console.log(lastName)
+  //const person = await Person.find({lastName})
+
+
+  let content = {};
+  if (req.query.lastName) {
+    content.lastName = {$regex: RegExp(req.query.lastName), $options:'-i'};
+  }
+  if (req.query.firstName) {
+    content.firstName = {$regex: RegExp(req.query.firstName), $options:'-i'};
+  }
+  if (req.query.rating) {
+    content.rating = {$regex: RegExp(req.query.rating), $options:'-i'};
+    
+  }
+  if (req.query.profession) {
+    content.profession = {$regex: RegExp(req.query.profession), $options:'-i'};
+  }
+  if (req.query.year) {
+    content.year = {$regex: RegExp(req.query.year), $options:'-i'};
+  }
+  console.log(content)
+  const person = await Person.find(content)
+  
+  res.status(200).json(person).send();
 });
 
 router.get('/persons/firstNameASC', (req, res, next) => {

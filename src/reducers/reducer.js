@@ -8,6 +8,7 @@ const initialState = {
   pending:false,
   actors:[],
   error:null
+  
   }
 
 
