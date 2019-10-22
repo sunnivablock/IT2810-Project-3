@@ -1,18 +1,19 @@
-/* App.js */
 import CanvasJSReact from './canvasjs.react';
-//var CanvasJSReact = require('./canvasjs.react');
+import getHotList from './fillGraph';
 var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 var React = require('react');
 var Component = React.Component;
 
-class GraphContainer extends Component {
+
+class GraphContainer extends Component{
 
 	render() {
+		if(getHotList().length===0) return (null)
+		
 		const options = {
 			animationEnabled: true,
 			backgroundColor: "white",
-			borderRadius: 2,
 			height: 300,
 			theme: "light2",
 			
@@ -20,7 +21,7 @@ class GraphContainer extends Component {
 				fontFamily: "georgia",
 				fontSize: 25,
 				lineSpacing: 2,
-				text: "BEST RATED PERSONS",
+				text: "BEST RATED",
 				fontWeight: "normal",
 				fontColor: "black"
 			},
@@ -39,12 +40,13 @@ class GraphContainer extends Component {
 			data: [{
 				type: "bar",
 				dataPoints: [
-					{ y:  9, label: "Hans" },
-					{ y:  7, label: "Petter" },
-					{ y:  6.5, label: "Ola" },
+					{ y: parseInt(getHotList()[0].rating) , label: getHotList()[0].firstName },
+					{ y: parseInt(getHotList()[1].rating) , label: getHotList()[1].firstName },
+					{ y: parseInt(getHotList()[2].rating) , label: getHotList()[2].firstName },
 				]
 			}]
 		}
+		
 		return (
 		<div>
 			<CanvasJSChart options = {options}

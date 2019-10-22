@@ -1,21 +1,19 @@
 import React, {Component} from 'react';
 import '../App.css';
-import logo from '../brad.png';
+import brad from '../brad.png';
 
 class Header extends Component{
     constructor(props){
         super(props);
         this.state = {
-            
-        };
-        
-         };
+        };      
+    };
     render(){
         return (
         <div className='Header'>
-            <img src={logo} className="App-logo" alt="logo" />
-            <span className="firstHeader" >BAROMETERET</span>
-            <img src={logo} className="App-logo" alt="logo" />
+            <img src={brad} className="App-logo" alt="logo" />
+            <span className="firstHeader">BAROMETERET</span>
+            <img src={brad} className="App-logo" alt="logo" />
         </div>
         );
     };

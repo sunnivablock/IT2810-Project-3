@@ -67,6 +67,13 @@ router.get('/persons/ratingDESC', (req, res, next) => {
   .catch(next)
 });
 
+router.get('/persons/bestThreeRated', (req, res, next) => {
+  Person.find({}).sort({rating:-1}).limit(3).collation({locale: "en_US", numericOrdering: true})
+  .then(data => res.json(data))
+  .catch(next)
+});
+
+
 router.get('/persons/yearASC', (req, res, next) => {
   Person.find({}).sort({year:1})
   .then(data => res.json(data))
@@ -78,6 +85,7 @@ router.get('/persons/yearDESC', (req, res, next) => {
   .then(data => res.json(data))
   .catch(next)
 });
+
 router.post('/persons', (req, res, next) => {
   console.log(req.body)
     if(req.body){
@@ -96,5 +104,7 @@ router.delete('/persons/:id', (req, res, next) => {
     .then(data => res.json(data))
     .catch(next)
 })
+
+
 
 module.exports = router;

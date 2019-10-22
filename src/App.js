@@ -3,6 +3,7 @@ import './App.css';
 import Table from './components/table'
 import Header from './components/header'
 import getActors2 from './components/data.js';
+import getHotList from './components/graphChart/fillGraph'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import fetchActorsAction from './components/fetchActors'
@@ -10,6 +11,7 @@ import {getActorsError, getActorsPending} from './reducers/reducer'
 import FormContainer from './components/FormContainer'
 import GraphContainer from './components/graphChart/GraphContainer'
 //var GraphContainer = require("./components/GraphContainer");
+
 
 class App extends Component {
   constructor(props){
@@ -19,8 +21,7 @@ class App extends Component {
 
   componentDidMount(){
     const {fetchActors}=this.props;
-    fetchActors('/api/persons/ratingASC');
-    
+    fetchActors('/api/persons/ratingDESC')
   }
 
 
@@ -28,40 +29,35 @@ class App extends Component {
   shouldComponentRender(){
       if(this.pending === false) return false;
       return true;
-}
+  }
 
 
   render() {
-     const { actors, error, fetchActors} = this.props;
+     const { error, fetchActors} = this.props;
      if(!this.shouldComponentRender()) return (<div>Appen laster ikke</div>)
       
      getActors2()
-     
-
+    
       return (
+        getHotList(),
         //fetchActors('/api/persons/ratingASC'),
         console.log(fetchActors.actors),
           <div>
               {error && <span >{error}</span>}
               <div className="App">
-              <header className="App-header">
-                <Header/>
-                <div className="mainContent">
-                <button /*onChange={fetchActors('/api/persons/ratingDESC')}*/>Klikk</button>
-                  <div className="table1">
-                    <Table/>
+                  <Header/>
+                  <div className="mainContent">
+                    <div className="table1">
+                      <Table/>
+                    </div>
+                    <div className="formContainer">
+                      <FormContainer/>
+                    </div>
+                    <div className="graphContainer">
+                      <GraphContainer/>
+                    </div>
                   </div>
-                  
-                  <div className="formContainer">
-                    <FormContainer/>
-                  </div>
-                  <div className="graphContainer">
-                    <GraphContainer/>
-                  </div>
-                </div>
-              </header>
-            </div>
-              
+            </div>  
           </div>
       )
   }
@@ -83,3 +79,6 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(App );
+
+
+//<button /*onChange={fetchActors('/api/persons/ratingDESC')}*/>Klikk</button>
