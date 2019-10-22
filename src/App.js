@@ -17,8 +17,6 @@ class App extends Component {
   constructor(props){
     super(props);
     this.shouldComponentRender=this.shouldComponentRender.bind(this);
-    //this.fetchActors=this.fetchActors.bind(this);
-    //this.testFunksjon=this.testFunksjon.bind(this);
   }
 
   componentDidMount(){
@@ -26,10 +24,7 @@ class App extends Component {
     fetchActors('/api/persons/ratingDESC')
   }
 
-  testFunksjon(url){
-    const {fetchActors}=this.props;
-    fetchActors(url)
-  }
+
 
   shouldComponentRender(){
       if(this.pending === false) return false;

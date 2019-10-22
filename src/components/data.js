@@ -8,6 +8,7 @@ function createData(digghet, fornavn, etternavn, fodt) {
   export default function getActors() {
     const state= store.getState();
     let rows = []
+  
 
     state.actors.actors.map(actor => {
         rows.push(createData(actor.rating, actor.firstName, actor.lastName, actor.year))
@@ -19,7 +20,6 @@ function createData(digghet, fornavn, etternavn, fodt) {
     return rows
   }
 
-export const rows = 20;
 
 
  
