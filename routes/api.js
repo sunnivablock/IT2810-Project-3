@@ -3,12 +3,16 @@ const router = express.Router();
 const Person = require('../models/persons');
 
 router.get('/persons', async (req, res, next) => {
-  //let lastName = {$regex : RegExp(req.query.lastName), $options : '-i'};
-  //console.log(lastName)
-  //const person = await Person.find({lastName})
 
+  const{sort, sortAsc} = req.query
+
+  let sorting, sortDirection
+
+  {sort ? sorting=sort:sorting = "rating"}
+  {sortAsc? sortDirection = 1: sortDirection=-1}
 
   let content = {};
+
   if (req.query.lastName) {
     content.lastName = {$regex: RegExp(req.query.lastName), $options:'-i'};
   }
@@ -25,66 +29,11 @@ router.get('/persons', async (req, res, next) => {
   if (req.query.year) {
     content.year = {$regex: RegExp(req.query.year), $options:'-i'};
   }
-  console.log(content)
-  const person = await Person.find(content)
+  const person = await Person.find(content).sort({[sorting]:sortDirection});
   
   res.status(200).json(person).send();
 });
 
-router.get('/persons/firstNameASC', (req, res, next) => {
-  Person.find({}).sort({firstName:1})
-  .then(data => res.json(data))
-  .catch(next)
-});
-
-router.get('/persons/firstNameDESC', (req, res, next) => {
-  Person.find({}).sort({firstName:-1})
-  .then(data => res.json(data))
-  .catch(next)
-});
-
-router.get('/persons/lastNameASC', (req, res, next) => {
-  Person.find({}).sort({lastName:1})
-  .then(data => res.json(data))
-  .catch(next)
-});
-
-router.get('/persons/lastNameDESC', (req, res, next) => {
-  Person.find({}).sort({lastName:-1})
-  .then(data => res.json(data))
-  .catch(next)
-});
-
-router.get('/persons/ratingASC', (req, res, next) => {
-  Person.find({}).sort({rating:1}).collation({locale: "en_US", numericOrdering: true})
-  .then(data => res.json(data))
-  .catch(next)
-});
-
-router.get('/persons/ratingDESC', (req, res, next) => {
-  Person.find({}).sort({rating:-1}).collation({locale: "en_US", numericOrdering: true})
-  .then(data => res.json(data))
-  .catch(next)
-});
-
-router.get('/persons/bestThreeRated', (req, res, next) => {
-  Person.find({}).sort({rating:-1}).limit(3).collation({locale: "en_US", numericOrdering: true})
-  .then(data => res.json(data))
-  .catch(next)
-});
-
-
-router.get('/persons/yearASC', (req, res, next) => {
-  Person.find({}).sort({year:1})
-  .then(data => res.json(data))
-  .catch(next)
-});
-
-router.get('/persons/yearDESC', (req, res, next) => {
-  Person.find({}).sort({year:-1})
-  .then(data => res.json(data))
-  .catch(next)
-});
 
 router.post('/persons', (req, res, next) => {
   console.log(req.body)
@@ -98,12 +47,7 @@ router.post('/persons', (req, res, next) => {
       next()
 });
 
-//Must add functionality for deleting later
-router.delete('/persons/:id', (req, res, next) => {
-    Person.findOneAndDelete({"_id": req.params.id})
-    .then(data => res.json(data))
-    .catch(next)
-})
+
 
 
 

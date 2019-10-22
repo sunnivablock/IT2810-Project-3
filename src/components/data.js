@@ -1,7 +1,6 @@
 import store from '../store/index.js'
 
 function createData(digghet, fornavn, etternavn, fodt) {
-    //const state= store.getState();
     return {digghet, fornavn, etternavn, fodt};
 }
 
