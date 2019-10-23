@@ -29,11 +29,11 @@ router.get('/persons', async (req, res, next) => {
   if (req.query.year) {
     content.year = {$regex: RegExp(req.query.year), $options:'-i'};
   }
+  
   const person = await Person.find(content).sort({[sorting]:sortDirection});
   
   res.status(200).json(person).send();
 });
-
 
 router.post('/persons', (req, res, next) => {
   console.log(req.body)

@@ -24,10 +24,11 @@ class App extends Component {
       SortDirection:"asc",
       values:{
         Rating:"", 
-        Fornavn:"a",
+        Fornavn:"",
         Etternavn:"",
         Født:"",
-      }
+      },
+      //showPersonDetails: true
     }
   }
 
@@ -53,8 +54,8 @@ class App extends Component {
 
 
   render(){
-    const showPersonDetails = this.state.showPersonDetails;
-    const { error, fetchActors} = this.props;
+    /*const showPersonDetails = this.state.showPersonDetails;*/
+    const { error } = this.props;
     if(!this.shouldComponentRender()) return (<div>Appen laster ikke</div>);
       
     getActors2()
@@ -72,7 +73,6 @@ class App extends Component {
                     <div className="formContainer">
                       <FormContainer/>
                     </div>
-                      {showPersonDetails ? ( <PersonInfo /> ):(null)}
                     <div className="graphContainer">
                       <GraphContainer/>
                     </div>
@@ -97,3 +97,6 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(App );
+
+
+//{showPersonDetails ? ( <PersonInfo /> ):(null)}

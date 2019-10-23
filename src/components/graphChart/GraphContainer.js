@@ -1,6 +1,5 @@
 import CanvasJSReact from './canvasjs.react';
 import getHotList from './fillGraph';
-import rootReducer from '../../reducers';
 var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 var React = require('react');
@@ -24,8 +23,12 @@ class GraphContainer extends Component{
 				fontSize: 25,
 				lineSpacing: 2,
 				text: "BEST RATED",
+				backgroundColor: '#282c34',
 				fontWeight: "normal",
-				fontColor: "black"
+				fontColor: "white",
+				margin: 10,
+				padding: 10,
+				fontWeight: 'bold'
 			},
 			axisX: {
 				title: "PERSON",
@@ -69,3 +72,5 @@ class GraphContainer extends Component{
 } 
 
 export default GraphContainer;
+
+//https://canvasjs.com/docs/charts/chart-options/title/fontcolor/

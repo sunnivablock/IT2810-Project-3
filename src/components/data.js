@@ -13,7 +13,6 @@ function createData(digghet, fornavn, etternavn, fodt) {
         rows.push(createData(actor.rating, actor.firstName, actor.lastName, actor.year))
         return null
     })
-
   
     return rows
   }
