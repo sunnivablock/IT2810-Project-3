@@ -18,15 +18,32 @@ class App extends Component {
   constructor(props){
     super(props);
     this.shouldComponentRender=this.shouldComponentRender.bind(this);
-    this.state = {
-      showPersonDetails: true
-    };
+    //Need to make input-fields for these values
+    this.state={
+      Sorting:"firstName",
+      SortDirection:"asc",
+      values:{
+        Rating:"", 
+        Fornavn:"a",
+        Etternavn:"",
+        Født:"",
+      }
+    }
   }
 
-  
+  generateURLQuery = () => {
+    return "/api/persons?" + ((!this.state.values.Fornavn) ? '' : `&firstName=${this.state.values.Fornavn}`)+ 
+        ((!this.state.values.Etternavn) ? '' : `&lastName=${this.state.values.Etternavn}`) +
+        ((!this.state.values.Rating) ? '' : `&rating=${this.state.values.Rating}`) +
+        ((!this.state.values.Født) ? '' : `&year=${this.state.values.Født}`)+
+        ((!this.state.Sorting) ? '' : `&sort=${this.state.Sorting}`)+
+        ((this.state.SortDirection === 'asc') ? '&sortAsc=True' : '');
+};
+
+
   componentDidMount(){
     const {fetchActors}=this.props;
-    fetchActors('/api/persons/ratingDESC')
+    fetchActors(this.generateURLQuery())
   }
 
   shouldComponentRender(){
@@ -44,8 +61,6 @@ class App extends Component {
     
       return (
         getHotList(),
-        //fetchActors('/api/persons/ratingASC'),
-        console.log(fetchActors.actors),
           <div>
               {error && <span >{error}</span>}
               <div className="App">
@@ -82,6 +97,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(App );
-
-
-//<button /*onChange={fetchActors('/api/persons/ratingDESC')}*/>Klikk</button>

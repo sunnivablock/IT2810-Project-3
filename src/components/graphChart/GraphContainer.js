@@ -1,9 +1,11 @@
 import CanvasJSReact from './canvasjs.react';
 import getHotList from './fillGraph';
+import rootReducer from '../../reducers';
 var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 var React = require('react');
 var Component = React.Component;
+
 
 
 class GraphContainer extends Component{
@@ -40,9 +42,9 @@ class GraphContainer extends Component{
 			data: [{
 				type: "bar",
 				dataPoints: [
-					{ y: parseInt(getHotList()[0].rating) , label: getHotList()[0].firstName },
+					/*{ y: parseInt(getHotList()[0].rating) , label: getHotList()[0].firstName },
 					{ y: parseInt(getHotList()[1].rating) , label: getHotList()[1].firstName },
-					{ y: parseInt(getHotList()[2].rating) , label: getHotList()[2].firstName },
+					{ y: parseInt(getHotList()[2].rating) , label: getHotList()[2].firstName },*/
 				]
 			}]
 		}

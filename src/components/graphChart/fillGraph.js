@@ -1,7 +1,7 @@
 import store from '../../store/index.js'
+import fetchActors from '../fetchActors' 
 
 function fillToplist(rating,firstName) {
-    //const state= store.getState();
     return {rating, firstName};
 }
 
