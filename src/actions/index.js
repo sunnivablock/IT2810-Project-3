@@ -5,6 +5,11 @@ export const FETCH_ACTORS_PENDING = 'FETCH_ACTORS_PENDING';
 export const FETCH_ACTORS_SUCCESS = 'FETCH_ACTORS_SUCCESS';
 export const FETCH_ACTORS_ERROR = 'FETCH_ACTORS_ERROR';
 
+export const SEARCH_PENDING = 'SEARCH_PENDING';
+export const SEARCH_SUCCESS = 'SEARCH_SUCCESS';
+export const SEARCH_ERROR = 'SEARCH_ERROR';
+export const SEARCH_FIELD = 'SEARCH_FIELD';
+
 export function fetchActorsPending() {
     return {
         type: FETCH_ACTORS_PENDING
@@ -23,4 +28,31 @@ export function fetchActorsError(error) {
         type: FETCH_ACTORS_ERROR,
         error: error
     }
+}
+
+export function SearchPending() {
+    return {
+        type: SEARCH_PENDING
+    }
+}
+
+export function SearchSuccess( values) {
+    return {
+        type: SEARCH_SUCCESS,
+        payload: values
+    }
+}
+
+export function SearchError(error) {
+    return {
+        type: SEARCH_ERROR,
+        error: error
+    }
+}
+
+export const searchField = text => dispatch => {
+    dispatch ({
+        type: SEARCH_FIELD,
+        payload: text
+    })
 }
