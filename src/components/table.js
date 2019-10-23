@@ -9,6 +9,7 @@ import Paper from '@material-ui/core/Paper';
 import TablePagination from '@material-ui/core/TablePagination';
 import getActors from './data';
 
+//this.fetchPersonDetails = this.fetchPersonDetails.bind(this);
 
 const headCells = [
   { id: 'rating', numeric: true,  label: 'Rating'},
@@ -36,7 +37,7 @@ function HeadOfTable() {
 export default function EnhancedTable() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
-  
+  //onClick={console.log("Person clicked")}
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -46,6 +47,14 @@ export default function EnhancedTable() {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+
+  function explorePerson(row) {
+    console.log("It works!")
+    console.log(row.fornavn, row.etternavn, row.digghet)
+    const personList = []
+    personList.push(row)
+    console.log(personList)
+  }
 
   return (
     <div className="main">
@@ -57,10 +66,10 @@ export default function EnhancedTable() {
               {getActors().slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, index) => {
                 return(
                   <TableRow>
-                        <TableCell align="left">{row.digghet} </TableCell>
-                        <TableCell align="left">{row.fornavn}</TableCell>
-                        <TableCell align="left">{row.etternavn}</TableCell>
-                        <TableCell align="left">{row.fodt}</TableCell>
+                        <TableCell align="left" >{row.digghet} </TableCell>
+                        <TableCell className='rowInTable' align="left" onClick={() => explorePerson(row)} on>{row.fornavn}</TableCell>
+                        <TableCell className='rowInTable' align="left" onClick={() => explorePerson(row)}>{row.etternavn}</TableCell>
+                        <TableCell align="left" >{row.fodt}</TableCell>
                     </TableRow>
                     );
                   })}
@@ -86,3 +95,4 @@ export default function EnhancedTable() {
     </div>
   );
 }
+

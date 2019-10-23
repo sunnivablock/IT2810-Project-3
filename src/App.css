@@ -92,7 +92,13 @@
   background-color: #282c34;
   flex-grow: 1;
   margin: 4px;
+}
 
+.rowInTable:hover{
+  font-style: italic;
+  cursor: pointer;
+  background: #282c34;
+  color: white;
 }
 
 .formContainer{
@@ -130,6 +136,23 @@
   padding: 10%;
 }
 
+.personInfo{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  letter-spacing: 1px;
+  font-size: 16px;
+  line-height: 40px;
+  background: white;
+  margin-top: 10px;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 10px;
+  vertical-align: top;
+  text-align: left;
+  flex: 1 0 50%;
+  width: 100%;
+  margin: 4px;
+}
+
 .graphContainer{
   background: white;
   margin-top: 10px;
@@ -139,9 +162,7 @@
   vertical-align: top;
   flex: 1 0 50%;
   margin: 4px;
-
 }
-
 
 .buttonWrap{
   justify-content: center;

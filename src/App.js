@@ -10,7 +10,8 @@ import fetchActorsAction from './components/fetchActors'
 import {getActorsError, getActorsPending} from './reducers/reducer'
 import FormContainer from './components/FormContainer'
 import GraphContainer from './components/graphChart/GraphContainer'
-
+import PersonInfo from './components/personInfo'
+//var GraphContainer = require("./components/GraphContainer");
 
 
 class App extends Component {
@@ -45,19 +46,19 @@ class App extends Component {
     fetchActors(this.generateURLQuery())
   }
 
-
-
   shouldComponentRender(){
       if(this.pending === false) return false;
       return true;
   }
 
 
-  render() {
-     const { error, fetchActors} = this.props;
-     if(!this.shouldComponentRender()) return (<div>Appen laster ikke</div>)
+  render(){
+    const showPersonDetails = this.state.showPersonDetails;
+    const { error, fetchActors} = this.props;
+    if(!this.shouldComponentRender()) return (<div>Appen laster ikke</div>);
       
-     getActors2()
+    getActors2()
+    
       return (
         getHotList(),
           <div>
@@ -71,6 +72,7 @@ class App extends Component {
                     <div className="formContainer">
                       <FormContainer/>
                     </div>
+                      {showPersonDetails ? ( <PersonInfo /> ):(null)}
                     <div className="graphContainer">
                       <GraphContainer/>
                     </div>
@@ -81,12 +83,10 @@ class App extends Component {
   }
 }
 
-
 const mapStateToProps = state => ({
   actors: state.actors.actors,
   error: getActorsError(state),
   pending: getActorsPending(state)
- 
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
