@@ -11,11 +11,10 @@ function createData(digghet, fornavn, etternavn, fodt) {
 
     state.actors.actors.map(actor => {
         rows.push(createData(actor.rating, actor.firstName, actor.lastName, actor.year))
-        return null //Needs to return something
+        return null
     })
 
-    //Want to use this rowcount instead of the constant outside function
-    
+  
     return rows
   }
 

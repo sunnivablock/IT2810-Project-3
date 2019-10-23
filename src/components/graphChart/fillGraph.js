@@ -1,4 +1,5 @@
 import store from '../../store/index.js'
+import fetchActors from '../fetchActors' 
 
 function fillToplist(rating,firstName) {
     return {rating, firstName};

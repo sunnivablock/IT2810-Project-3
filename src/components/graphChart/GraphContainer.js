@@ -1,9 +1,11 @@
 import CanvasJSReact from './canvasjs.react';
 import getHotList from './fillGraph';
+import rootReducer from '../../reducers';
 var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 var React = require('react');
 var Component = React.Component;
+
 
 
 class GraphContainer extends Component{
