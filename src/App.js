@@ -21,7 +21,7 @@ class App extends Component {
   constructor(props){
     super(props);
     this.shouldComponentRender=this.shouldComponentRender.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    
     this.handleFirstName = this.handleFirstName.bind(this);
     this.handleLastName = this.handleLastName.bind(this);
     this.handleYear = this.handleYear.bind(this);
@@ -122,8 +122,8 @@ class App extends Component {
                       margin="normal"
                       />
                       <TextField
-                      id="Fornavn"
-                      label="Fornavn"
+                      id="First name"
+                      label="First Name"
                       value={this.state.values.firstName}
                       className="searchField"
                       onChange={this.handleFirstName}
@@ -131,7 +131,7 @@ class App extends Component {
                       />
                       <TextField
                       id="Etternavn"
-                      label="Etternavn"
+                      label="Last Name"
                       value={this.state.values.lastName}
                       className="searchField"
                       onChange={this.handleLastName}
@@ -139,7 +139,7 @@ class App extends Component {
                       />
                       <TextField
                       id="Født"
-                      label="Født"
+                      label="Year"
                       value={this.state.values.year}
                       className="searchField"
                       onChange={this.handleYear}

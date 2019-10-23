@@ -142,35 +142,35 @@ render() {
           title= {'First name '} 
           name= {'firstName'}
           value={this.state.newPerson.firstName} 
-          placeholder = {'Fornavn'}
+          placeholder = {'John'}
           handleChange = {this.handleFirstName}/> {/* First name of the user */}
         
         <Input inputType={'text'}
           title= {'Last name '} 
           name= {'lastName'}
           value={this.state.newPerson.lastName} 
-          placeholder = {'Etternavn'}
+          placeholder = {'Smith'}
           handleChange = {this.handleLastName}/> {/* Last name of the user */}
 
         <Input inputType={'number'} 
           name={'age'}
           title= {'Age '} 
           value={this.state.newPerson.age} 
-          placeholder = {'Fødselsår'}
+          placeholder = {'1900'}
           handleChange={this.handleAge} /> {/* Age */} 
         
         <Input inputType={'text'} 
           name={'profession'}
           title= {'Profession '} 
           value={this.state.newPerson.profession} 
-          placeholder = {'Yrke'}
+          placeholder = {'Pimp'}
           handleChange={this.handleProfession} /> {/* Profession */} 
         
         <Select title={'Rating'}
           name={'rating'}
           options = {this.addRatingOptions()} 
           value = {this.state.newPerson.rating}
-          placeholder = {'Velg rating'}
+          placeholder = {'69'}
           handleChange = {this.handleRating}
           /> {/* Rating selection */}
 

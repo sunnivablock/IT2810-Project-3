@@ -29,9 +29,9 @@ const useStyles = makeStyles(theme => ({
 
 const headCells = [
   { id: 'rating', numeric: true,  label: 'Rating'},
-  { id: 'fornavn', numeric: false,  label: 'Fornavn'},
-  { id: 'etternavn', numeric: false, label: 'Etternavn'},
-  { id: 'fodt', numeric: true,  label: 'Født'},
+  { id: 'fornavn', numeric: false,  label: 'First Name'},
+  { id: 'etternavn', numeric: false, label: 'Last Name'},
+  { id: 'fodt', numeric: true,  label: 'Year'},
   
 ];
 
