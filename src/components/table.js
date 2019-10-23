@@ -11,6 +11,7 @@ import Paper from '@material-ui/core/Paper';
 import TablePagination from '@material-ui/core/TablePagination';
 import getActors from './data';
 
+//this.fetchPersonDetails = this.fetchPersonDetails.bind(this);
 
 function desc(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -43,9 +44,6 @@ const headCells = [
   { id: 'fodt', numeric: true,  label: 'Født'},
   
 ];
-
-
-
 
 function HeadOfTable(props) {
   const {order, orderBy, onRequestSort } = props;
@@ -89,7 +87,7 @@ export default function EnhancedTable() {
   const [orderBy, setOrderBy] = React.useState('');
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
-  
+  //onClick={console.log("Person clicked")}
 
   const handleRequestSort = (event, property) => {
     const isDesc = orderBy === property && order === 'desc';
@@ -106,6 +104,14 @@ export default function EnhancedTable() {
     setPage(0);
   };
 
+  function explorePerson(row) {
+    console.log("It works!")
+    console.log(row.fornavn, row.etternavn, row.digghet)
+    const personList = []
+    personList.push(row)
+    console.log(personList)
+  }
+
   return (
     <div className="main">
       <Paper className="paper">
@@ -114,7 +120,6 @@ export default function EnhancedTable() {
             className="table"
           >
             <HeadOfTable
-
               order={order}
               orderBy={orderBy}
               onRequestSort={handleRequestSort}
@@ -126,10 +131,10 @@ export default function EnhancedTable() {
               .map((row, index) => {
                 return(
                   <TableRow>
-                        <TableCell align="left">{row.digghet} </TableCell>
-                        <TableCell align="left">{row.fornavn}</TableCell>
-                        <TableCell align="left">{row.etternavn}</TableCell>
-                        <TableCell align="left">{row.fodt}</TableCell>
+                        <TableCell align="left" >{row.digghet} </TableCell>
+                        <TableCell className='rowInTable' align="left" onClick={() => explorePerson(row)} on>{row.fornavn}</TableCell>
+                        <TableCell className='rowInTable' align="left" onClick={() => explorePerson(row)}>{row.etternavn}</TableCell>
+                        <TableCell align="left" >{row.fodt}</TableCell>
                     </TableRow>
                     );
                   })}
@@ -155,3 +160,4 @@ export default function EnhancedTable() {
     </div>
   );
 }
+
