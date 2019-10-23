@@ -57,7 +57,7 @@ class App extends Component {
     this.setState( prevState => ({ values : 
          {...prevState.values, firstName: value
          }
-       }), () => console.log(this.state.newPerson))
+       }) )
    }
 
    handleLastName(e) {
@@ -65,7 +65,7 @@ class App extends Component {
     this.setState( prevState => ({ values : 
          {...prevState.values, lastName: value
          }
-       }), () => console.log(this.state.newPerson))
+       }))
    }
 
    handleYear(e) {
@@ -73,7 +73,7 @@ class App extends Component {
     this.setState( prevState => ({ values : 
          {...prevState.values, year: value
          }
-       }), () => console.log(this.state.newPerson))
+       }))
    }
 
    handleRating(e) {
@@ -81,24 +81,14 @@ class App extends Component {
     this.setState( prevState => ({ values : 
          {...prevState.values, rating: value
          }
-       }), () => console.log(this.state.newPerson))
+       }))
    }
 
-  handleChange = navn => event => {
-    let value= event.state.value
-    this.setState( prevState => ({ newPerson : 
-      {...prevState.navn, name: value
-      }
-    }))
-    console.log(event.target.value)
-    console.log("Rating:",this.state.values.Rating)
-    console.log("Fornavn:",this.state.values.Fornavn)
-    //sendData()
-  };
- 
+
 
 
   render() {
+    console.log(this.state.newPerson)
     console.log(this.state.values)
      const { error, fetchActors} = this.props;
      if(!this.shouldComponentRender()) return (<div>Appen laster ikke</div>)
