@@ -10,6 +10,7 @@ import fetchActorsAction from './components/fetchActors'
 import {getActorsError, getActorsPending} from './reducers/reducer'
 import FormContainer from './components/FormContainer'
 import GraphContainer from './components/graphChart/GraphContainer'
+import PersonInfo from './components/personInfo'
 //var GraphContainer = require("./components/GraphContainer");
 //import Search from './components/search2'
 import { Select } from '@material-ui/core';
@@ -34,16 +35,20 @@ class App extends Component {
   } }
   }
 
+  generateURLQuery = () => {
+    return "/api/persons?" + ((!this.state.values.Fornavn) ? '' : `&firstName=${this.state.values.Fornavn}`)+ 
+        ((!this.state.values.Etternavn) ? '' : `&lastName=${this.state.values.Etternavn}`) +
+        ((!this.state.values.Rating) ? '' : `&rating=${this.state.values.Rating}`) +
+        ((!this.state.values.Født) ? '' : `&year=${this.state.values.Født}`)+
+        ((!this.state.Sorting) ? '' : `&sort=${this.state.Sorting}`)+
+        ((this.state.SortDirection === 'asc') ? '&sortAsc=True' : '');
+};
+
+
   componentDidMount(){
     const {fetchActors}=this.props;
-    fetchActors('/api/persons/ratingDESC')
+    fetchActors(this.generateURLQuery())
   }
-
-
-
-/*callbackFunction = (childData) => {
-      this.setState({values: childData})
-}*/
 
   shouldComponentRender(){
       if(this.pending === false) return false;
@@ -99,8 +104,6 @@ class App extends Component {
     
       return (
         getHotList(),
-        //fetchActors('/api/persons/ratingASC'),
-        console.log(fetchActors.actors),
           <div>
               {error && <span >{error}</span>}
               <div className="App">
@@ -159,7 +162,6 @@ class App extends Component {
   }
 }
 
-
 const mapStateToProps = state => ({
   actors: state.actors.actors,
   error: getActorsError(state),
@@ -177,4 +179,4 @@ export default connect(
 )(App );
 
 
-//<button /*onChange={fetchActors('/api/persons/ratingDESC')}*/>Klikk</button>
+//{showPersonDetails ? ( <PersonInfo /> ):(null)}

@@ -6,6 +6,7 @@ var React = require('react');
 var Component = React.Component;
 
 
+
 class GraphContainer extends Component{
 
 	render() {
@@ -22,8 +23,12 @@ class GraphContainer extends Component{
 				fontSize: 25,
 				lineSpacing: 2,
 				text: "BEST RATED",
+				backgroundColor: '#282c34',
 				fontWeight: "normal",
-				fontColor: "black"
+				fontColor: "white",
+				margin: 10,
+				padding: 10,
+				fontWeight: 'bold'
 			},
 			axisX: {
 				title: "PERSON",
@@ -40,9 +45,9 @@ class GraphContainer extends Component{
 			data: [{
 				type: "bar",
 				dataPoints: [
-					{ y: parseInt(getHotList()[0].rating) , label: getHotList()[0].firstName },
+					/*{ y: parseInt(getHotList()[0].rating) , label: getHotList()[0].firstName },
 					{ y: parseInt(getHotList()[1].rating) , label: getHotList()[1].firstName },
-					{ y: parseInt(getHotList()[2].rating) , label: getHotList()[2].firstName },
+					{ y: parseInt(getHotList()[2].rating) , label: getHotList()[2].firstName },*/
 				]
 			}]
 		}
@@ -67,3 +72,5 @@ class GraphContainer extends Component{
 } 
 
 export default GraphContainer;
+
+//https://canvasjs.com/docs/charts/chart-options/title/fontcolor/

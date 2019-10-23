@@ -27,40 +27,9 @@ app.use(bodyParser.json());
 app.use('/api', routes);
 
 app.use((err, req, res, next) => {
-  console.log(err);
   next();
 });
 
 app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`))
 
 
-
-// find all persons who are actors
-/*actor.find({ 'profession': 'actor' }, function (err, actors) {
-  if (err) return handleError(err);
-  console.log(actors)
-  // 'actors' contains the list of persons that match the criteria.
-})*/
-
-/*//Get the default connection
-var db = mongoose.connection;
-
-//Bind connection to error event (to get notification of connection errors)
-db.on('error', console.error.bind(console, 'Connection error: '));
-db.once('open', function(callback) {
-
-    //The code in this asynchronous callback block is executed after connecting to MongoDB. 
-    console.log('Successfully connected to MongoDB.');
-});*/
-
-/*
-app.post("/persons", (req, res) => {
-  var myData = new Person(req.body);
-  myData.save()
-    .then(item => {
-      res.send("person saved to d atabase");
-    })
-    .catch(err => {
-      res.status(400).send("unable to save to database");
-    });
-});*/

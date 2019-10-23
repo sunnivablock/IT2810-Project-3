@@ -1,7 +1,6 @@
 import store from '../../store/index.js'
 
 function fillToplist(rating,firstName) {
-    //const state= store.getState();
     return {rating, firstName};
 }
 

@@ -13,7 +13,8 @@ const dataSchema = new Schema({
     lastName: String,
     profession: String,
     year: String,
-    rating: String},
+    rating: String
+  },
   { timestamp: true, collection : 'Krutt' }
 );
 

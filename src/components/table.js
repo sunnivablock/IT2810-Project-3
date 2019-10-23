@@ -1,40 +1,31 @@
 import React from 'react';
 import '../App.css'
-import PropTypes from 'prop-types';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Paper from '@material-ui/core/Paper';
 import TablePagination from '@material-ui/core/TablePagination';
 import getActors from './data';
 
+import { makeStyles } from '@material-ui/core/styles';
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import Typography from '@material-ui/core/Typography';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-function desc(a, b, orderBy) {
-  if (b[orderBy] < a[orderBy]) {
-    return -1;
-  }
-  if (b[orderBy] > a[orderBy]) {
-    return 1;
-  }
-  return 0;
-}
-
-function stableSort(array, cmp) {
-  const stabilizedThis = array.map((el, index) => [el, index]);
-  stabilizedThis.sort((a, b) => {
-    const order = cmp(a[0], b[0]);
-    if (order !== 0) return order;
-    return a[1] - b[1];
-  });
-  return stabilizedThis.map(el => el[0]);
-}
-
-function getSorting(order, orderBy) {
-  return order === 'desc' ? (a, b) => desc(a, b, orderBy) : (a, b) => -desc(a, b, orderBy);
-}
+const useStyles = makeStyles(theme => ({
+  root: {
+    width: '80%',
+  },
+  heading: {
+    fontSize: theme.typography.pxToRem(15),
+    fontWeight: theme.typography.fontWeightRegular,
+    margin: -10
+  },
+}));
 
 const headCells = [
   { id: 'rating', numeric: true,  label: 'Rating'},
@@ -44,32 +35,13 @@ const headCells = [
   
 ];
 
-
-
-
-function HeadOfTable(props) {
-  const {order, orderBy, onRequestSort } = props;
-  const createSortHandler = property => event => {
-    onRequestSort(event, property);
-  };
-
+function HeadOfTable() {
   return (
     <TableHead>
       <TableRow>
         {headCells.map(headCell => (
-          <TableCell>
-            <TableSortLabel
-              active={orderBy === headCell.id}
-              direction={order}
-              onClick={createSortHandler(headCell.id)}
-            >
-              {headCell.label}
-              {orderBy === headCell.id ? (
-                <span className="visuallyHidden">
-                  {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
-                </span>
-              ) : null}
-            </TableSortLabel>
+          <TableCell style={{ fontWeight: 'bold', align: 'center'}}>
+              {headCell.label.toUpperCase()}
           </TableCell>
         ))}
       </TableRow>
@@ -77,25 +49,12 @@ function HeadOfTable(props) {
   );
 }
 
-HeadOfTable.propTypes = { 
-  onRequestSort: PropTypes.func.isRequired,
-  order: PropTypes.oneOf(['asc', 'desc']).isRequired,
-  orderBy: PropTypes.string.isRequired,
-};
-
-
 export default function EnhancedTable() {
-  const [order, setOrder] = React.useState('desc');
-  const [orderBy, setOrderBy] = React.useState('');
+  const classes = useStyles();
+
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
-  
-
-  const handleRequestSort = (event, property) => {
-    const isDesc = orderBy === property && order === 'desc';
-    setOrder(isDesc ? 'asc' : 'desc');
-    setOrderBy(property);
-  };
+  //onClick={console.log("Person clicked")}
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -106,31 +65,42 @@ export default function EnhancedTable() {
     setPage(0);
   };
 
+  function explorePerson(row) {
+    console.log("Person clicked! Info below.")
+    const personList = []
+    personList.push(row)
+    console.log(personList)
+  }
+
   return (
     <div className="main">
+          
       <Paper className="paper">
         <div className="tableWrapper">
-          <Table
-            className="table"
-          >
-            <HeadOfTable
-
-              order={order}
-              orderBy={orderBy}
-              onRequestSort={handleRequestSort}
-            />
-
+          <Table className="table">
+            <HeadOfTable/>
             <TableBody>
-              {stableSort(getActors(), getSorting(order, orderBy))
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row, index) => {
+              {getActors().slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, index) => {
                 return(
-                  <TableRow>
-                        <TableCell align="left">{row.digghet} </TableCell>
-                        <TableCell align="left">{row.fornavn}</TableCell>
-                        <TableCell align="left">{row.etternavn}</TableCell>
-                        <TableCell align="left">{row.fodt}</TableCell>
-                    </TableRow>
+                <TableRow>
+                  <TableCell align="left">{row.digghet} </TableCell>
+                  <div className={classes.root}>
+                  <TableCell align="left">
+                    <ExpansionPanel>
+                      <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
+                        <Typography className={classes.heading} align="left">{row.fornavn}</Typography>
+                      </ExpansionPanelSummary>
+                      <ExpansionPanelDetails>
+                        <Typography>
+                        {row.fornavn} ble født i {row.fodt}.
+                        </Typography>
+                      </ExpansionPanelDetails>
+                    </ExpansionPanel>
+                  </TableCell>
+                  </div>
+                  <TableCell className='rowInTable' align="left">{row.etternavn}</TableCell>
+                  <TableCell align="left" >{row.fodt}</TableCell>  
+                </TableRow>
                     );
                   })}
             </TableBody>
@@ -155,3 +125,6 @@ export default function EnhancedTable() {
     </div>
   );
 }
+
+//<TableCell className='rowInTable' align="left" onClick={() => explorePerson(row)} on>{row.fornavn}</TableCell>
+//<TableCell className='rowInTable' align="left" onClick={() => explorePerson(row)}>{row.etternavn}</TableCell>
