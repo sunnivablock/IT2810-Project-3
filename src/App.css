@@ -121,6 +121,8 @@
 .formHeader{
   font-size: 20px;
   margin: 10px;
+  background: #282c34;
+  color: white;
   text-align: center;
   font-family: Georgia, 'Times New Roman', Times, serif;
   letter-spacing: 4px;
@@ -162,6 +164,7 @@
   vertical-align: top;
   flex: 1 0 50%;
   margin: 4px;
+  margin-bottom: 10px;
 }
 
 .buttonWrap{
@@ -194,4 +197,23 @@
   clip: rect(0px, 0px, 0px, 0px);
   overflow: hidden;
   position: absolute;
+}
+
+
+.searchContainer{
+  color: black;
+  display: flex;
+  direction: row;
+  background: white;
+  width: 30rem;
+  padding:1rem;
+  
+  align-self: left;
+}
+
+.searchField{
+  margin-left: 5rem;
+  margin-right: 10rem;
+  
+  
 }

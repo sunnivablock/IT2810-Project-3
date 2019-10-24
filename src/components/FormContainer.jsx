@@ -18,9 +18,8 @@ class FormContainer extends Component {
         lastName: '',
         profession: '',
         year: '',
-        rating: ''
+        rating: '',
       },
-      ratingOptions: ['1','2','3','4','5','6','7','8','9','10']
     }
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handleClearForm = this.handleClearForm.bind(this);
@@ -30,6 +29,8 @@ class FormContainer extends Component {
     this.handleProfession = this.handleProfession.bind(this);
     this.handleInput = this.handleInput.bind(this);
     this.handleRating = this.handleRating.bind(this);
+    this.addRatingOptions = this.addRatingOptions.bind(this);
+    //this.checkEnabled = this.checkEnabled.bind(this);
   }
 
   /* This life cycle hook gets executed when the component mounts */
@@ -42,6 +43,14 @@ class FormContainer extends Component {
        }), () => console.log(this.state.newPerson))
    }
    
+   addRatingOptions(){
+     const ratingOptions = [];
+     for(var i=1; i<101; i++){
+       ratingOptions.push(i);
+     }
+     return ratingOptions;
+   }
+
    handleLastName(e) {
     let value = e.target.value;
     this.setState( prevState => ({ newPerson : 
@@ -101,7 +110,12 @@ class FormContainer extends Component {
   submitResponse(){
     console.log("Submit button pushed")
   }
-
+/*
+  checkEnabled(){
+    
+    return isEnabled;
+  }
+*/
   handleClearForm(e) {
     // Logic for resetting the form
     e.preventDefault(); //prevents the page from being refreshed on form submission, which is the default form behavior.
@@ -110,13 +124,17 @@ class FormContainer extends Component {
         firstName: '',
         lastName: '',
         profession: '',
-        year: '',
+        age: '',
         rating: ''
       },
     })
+    //console.log(this.state.newPerson);
 }
 
 render() {
+  const { firstName, lastName, profession, year, rating } = this.state.newPerson;
+  const isEnabled = firstName.length > 0 && lastName.length > 0 && profession.length > 0 && year !==0 && 0<rating<101;
+    //
   return (
       <form className="formContainer">
         <h2 className='formHeader'>ADD NEW PERSON</h2>
@@ -125,55 +143,58 @@ render() {
           title= {'First name '} 
           name= {'firstName'}
           value={this.state.newPerson.firstName} 
-          placeholder = {'Fornavn'}
+          placeholder = {'John'}
           handleChange = {this.handleFirstName}/> {/* First name of the user */}
         
         <Input inputType={'text'}
           title= {'Last name '} 
           name= {'lastName'}
           value={this.state.newPerson.lastName} 
-          placeholder = {'Etternavn'}
+          placeholder = {'Smith'}
           handleChange = {this.handleLastName}/> {/* Last name of the user */}
 
         <Input inputType={'number'} 
           name={'age'}
           title= {'Age '} 
           value={this.state.newPerson.age} 
-          placeholder = {'Fødselsår'}
+          placeholder = {'1900'}
           handleChange={this.handleAge} /> {/* Age */} 
         
         <Input inputType={'text'} 
           name={'profession'}
           title= {'Profession '} 
           value={this.state.newPerson.profession} 
-          placeholder = {'Yrke'}
+          placeholder = {'Pimp'}
           handleChange={this.handleProfession} /> {/* Profession */} 
         
         <Select title={'Rating'}
           name={'rating'}
-          options = {this.state.ratingOptions} 
+          options = {this.addRatingOptions()} 
           value = {this.state.newPerson.rating}
-          placeholder = {'Velg rating'}
+          placeholder = {'55'}
           handleChange = {this.handleRating}
           /> {/* Rating selection */}
 
         <Button 
           action = {this.handleFormSubmit}
           type = {'primary'} 
+          disabled = {!isEnabled}
           title = {'Submit'} 
           onClick = {this.submitResponse}
-          style={buttonStyle}/> { /*Submit */ }
+          style = {buttonStyle}/> { /*Submit */ }
       
         <Button 
           action = {this.handleClearForm}
           type = {'secondary'}
           title = {'Clear'}
-          style={buttonStyle}/> {/* Clear the form */}
+          style = {buttonStyle}/> {/* Clear the form */}
 
       </form>
   );
 }
 }
+
+//!(this.checkEnabled())
 
 const buttonStyle = {
 margin : '5px 5px 5px 5px'

@@ -10,8 +10,12 @@ import fetchActorsAction from './components/fetchActors'
 import {getActorsError, getActorsPending} from './reducers/reducer'
 import FormContainer from './components/FormContainer'
 import GraphContainer from './components/graphChart/GraphContainer'
+
 import fetchTopActorsAction from './components/fetchTopActors'
 import {getTopActorsError, getTopActorsPending, getTopActors} from './reducers/reducer'
+
+import Search from './components/search'
+import Button from './components/Button';
 
 
 
@@ -19,26 +23,28 @@ class App extends Component {
   constructor(props){
     super(props);
     this.shouldComponentRender=this.shouldComponentRender.bind(this);
-    //Need to make input-fields for these values
-    this.state={
-      Sorting:"firstName",
-      SortDirection:"asc",
+    this.handleButtonClick = this.handleButtonClick.bind(this);
+    this.fire= this.fire.bind(this);
+    this.state = {
       values:{
-        Rating:"", 
-        Fornavn:"a",
-        Etternavn:"",
-        Født:"",
-      }
-    }
+      rating: '',
+      firstName: '',
+      lastName: '',
+      year: '',
+      Sorting:"firstName",
+      SortDirection:"asc"
+
+  } }
   }
 
   generateURLQuery = () => {
-    return "/api/persons?" + ((!this.state.values.Fornavn) ? '' : `&firstName=${this.state.values.Fornavn}`)+ 
-        ((!this.state.values.Etternavn) ? '' : `&lastName=${this.state.values.Etternavn}`) +
-        ((!this.state.values.Rating) ? '' : `&rating=${this.state.values.Rating}`) +
-        ((!this.state.values.Født) ? '' : `&year=${this.state.values.Født}`)+
-        ((!this.state.Sorting) ? '' : `&sort=${this.state.Sorting}`)+
-        ((this.state.SortDirection === 'asc') ? '&sortAsc=True' : '');
+    return "/api/persons?" + ((!this.state.values.firstName) ? '' : `&firstName=${this.state.values.firstName}`)+ 
+        ((!this.state.values.lastName) ? '' : `&lastName=${this.state.values.lastName}`) +
+        ((!this.state.values.rating) ? '' : `&rating=${this.state.values.rating}`) +
+        ((!this.state.values.year) ? '' : `&year=${this.state.values.year}`)+
+        ((!this.state.values.Sorting) ? '' : `&sort=${this.state.values.Sorting}`)+
+        ((this.state.values.SortDirection === 'asc') ? '&sortAsc=True' : '');
+        
 };
 
 
@@ -47,6 +53,7 @@ class App extends Component {
     fetchActors(this.generateURLQuery())
     const {fetchTopActors}=this.props;
     fetchTopActors('/api/persons?sort=rating')
+
     
   }
 
@@ -55,14 +62,22 @@ class App extends Component {
       return true;
   }
 
+  fire() {
+    const {fetchActors}=this.props;
+    fetchActors(this.generateURLQuery())
+  }
 
-  render(){
-    const showPersonDetails = this.state.showPersonDetails;
+   handleButtonClick() {
+      this.setState({values:{firstName: this.props.values.Fornavn, 
+        lastName:this.props.values.Etternavn, year:this.props.values.Født,
+        rating:this.props.values.Rating, Sorting:this.props.values.Sorting,
+        SortDirection:this.props.values.SortDirection}},this.fire)
+   }
+
+  render() {
     const { error, fetchActors} = this.props;
-    if(!this.shouldComponentRender()) return (<div>Appen laster ikke</div>);
-      
-    getActors2()
-    
+     if(!this.shouldComponentRender()) return (<div>Appen laster ikke</div>)
+     getActors2()
       return (
         getHotList(),
           <div>
@@ -70,13 +85,19 @@ class App extends Component {
               <div className="App">
                   <Header/>
                   <div className="mainContent">
+                    <Search />
+                    <Button 
+                      title = "Knapp"
+                      type = {'button' }
+                      action={this.handleButtonClick}
+                    /> 
                     <div className="table1">
                       <Table/>
                     </div>
                     <div className="formContainer">
                       <FormContainer/>
                     </div>
-                      
+
                     <div className="graphContainer">
                       <GraphContainer/>
                     </div>
@@ -95,8 +116,11 @@ const mapStateToProps = state => {
   topactors: state.topactors.topactors,
   error: getActorsError(state),
   pending: getActorsPending(state)
+  values: state.values.values
  
 }}
+
+ 
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   fetchActors: fetchActorsAction,
@@ -107,3 +131,4 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(App);
+

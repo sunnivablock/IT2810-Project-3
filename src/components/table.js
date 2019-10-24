@@ -9,24 +9,39 @@ import Paper from '@material-ui/core/Paper';
 import TablePagination from '@material-ui/core/TablePagination';
 import getActors from './data';
 
-//this.fetchPersonDetails = this.fetchPersonDetails.bind(this);
+import { makeStyles } from '@material-ui/core/styles';
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import Typography from '@material-ui/core/Typography';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    width: '80%',
+  },
+  heading: {
+    fontSize: theme.typography.pxToRem(15),
+    fontWeight: theme.typography.fontWeightRegular,
+    margin: -10
+  },
+}));
 
 const headCells = [
   { id: 'rating', numeric: true,  label: 'Rating'},
-  { id: 'fornavn', numeric: false,  label: 'Fornavn'},
-  { id: 'etternavn', numeric: false, label: 'Etternavn'},
-  { id: 'fodt', numeric: true,  label: 'Født'},
+  { id: 'fornavn', numeric: false,  label: 'First Name'},
+  { id: 'etternavn', numeric: false, label: 'Last Name'},
+  { id: 'fodt', numeric: true,  label: 'Year'},
   
 ];
 
 function HeadOfTable() {
-
   return (
     <TableHead>
       <TableRow>
         {headCells.map(headCell => (
-          <TableCell>
-              {headCell.label}
+          <TableCell style={{ fontWeight: 'bold', align: 'center'}}>
+              {headCell.label.toUpperCase()}
           </TableCell>
         ))}
       </TableRow>
@@ -35,6 +50,8 @@ function HeadOfTable() {
 }
 
 export default function EnhancedTable() {
+  const classes = useStyles();
+
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
   //onClick={console.log("Person clicked")}
@@ -49,8 +66,7 @@ export default function EnhancedTable() {
   };
 
   function explorePerson(row) {
-    console.log("It works!")
-    console.log(row.fornavn, row.etternavn, row.digghet)
+    console.log("Person clicked! Info below.")
     const personList = []
     personList.push(row)
     console.log(personList)
@@ -58,6 +74,7 @@ export default function EnhancedTable() {
 
   return (
     <div className="main">
+          
       <Paper className="paper">
         <div className="tableWrapper">
           <Table className="table">
@@ -65,12 +82,25 @@ export default function EnhancedTable() {
             <TableBody>
               {getActors().slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, index) => {
                 return(
-                  <TableRow>
-                        <TableCell align="left" >{row.digghet} </TableCell>
-                        <TableCell className='rowInTable' align="left" onClick={() => explorePerson(row)} on>{row.fornavn}</TableCell>
-                        <TableCell className='rowInTable' align="left" onClick={() => explorePerson(row)}>{row.etternavn}</TableCell>
-                        <TableCell align="left" >{row.fodt}</TableCell>
-                    </TableRow>
+                <TableRow>
+                  <TableCell align="left">{row.digghet} </TableCell>
+                  <div className={classes.root}>
+                  <TableCell align="left">
+                    <ExpansionPanel>
+                      <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
+                        <Typography className={classes.heading} align="left">{row.fornavn}</Typography>
+                      </ExpansionPanelSummary>
+                      <ExpansionPanelDetails>
+                        <Typography>
+                        {row.fornavn} ble født i {row.fodt}.
+                        </Typography>
+                      </ExpansionPanelDetails>
+                    </ExpansionPanel>
+                  </TableCell>
+                  </div>
+                  <TableCell className='rowInTable' align="left">{row.etternavn}</TableCell>
+                  <TableCell align="left" >{row.fodt}</TableCell>  
+                </TableRow>
                     );
                   })}
             </TableBody>
@@ -96,3 +126,5 @@ export default function EnhancedTable() {
   );
 }
 
+//<TableCell className='rowInTable' align="left" onClick={() => explorePerson(row)} on>{row.fornavn}</TableCell>
+//<TableCell className='rowInTable' align="left" onClick={() => explorePerson(row)}>{row.etternavn}</TableCell>
