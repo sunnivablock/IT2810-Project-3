@@ -19,6 +19,7 @@ import Button from './components/Button';
 
 
 
+
 class App extends Component {
   constructor(props){
     super(props);
@@ -75,7 +76,7 @@ class App extends Component {
    }
 
   render() {
-    const { error, fetchActors} = this.props;
+    const { error} = this.props;
      if(!this.shouldComponentRender()) return (<div>Appen laster ikke</div>)
      getActors2()
       return (
@@ -115,7 +116,7 @@ const mapStateToProps = state => {
   actors: state.actors.actors,
   topactors: state.topactors.topactors,
   error: getActorsError(state),
-  pending: getActorsPending(state)
+  pending: getActorsPending(state),
   values: state.values.values
  
 }}

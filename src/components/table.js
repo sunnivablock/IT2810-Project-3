@@ -36,11 +36,15 @@ const headCells = [
 ];
 
 function HeadOfTable() {
+ function generateKey(){
+   var rndmKey = Math.random();
+   return rndmKey
+ }
   return (
     <TableHead>
       <TableRow>
         {headCells.map(headCell => (
-          <TableCell style={{ fontWeight: 'bold', align: 'center'}}>
+          <TableCell style={{ fontWeight: 'bold', width: '10%'} } key={generateKey()}>
               {headCell.label.toUpperCase()}
           </TableCell>
         ))}
@@ -51,7 +55,6 @@ function HeadOfTable() {
 
 export default function EnhancedTable() {
   const classes = useStyles();
-
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
   //onClick={console.log("Person clicked")}
@@ -64,17 +67,23 @@ export default function EnhancedTable() {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
-
-  function explorePerson(row) {
-    console.log("Person clicked! Info below.")
-    const personList = []
-    personList.push(row)
-    console.log(personList)
-  }
-
+  //Når lagringen av rating har blitt gjort om til int i databasen, må funksjonen under kommenteres inn :-)
+  /*function evaluateRating(rating){
+    if(parseInt(rating)<30){
+        return("This person is rated as below average");
+    }
+    else if(29<parseInt(rating)<70){
+        return("This person is rated as average");
+    }
+    else if(69<parseInt(rating)<90){
+        return("This person is rated as pretty good looking");
+    }
+    else{
+        return("This person is rated as really damn hot");
+    }
+  }*/
   return (
     <div className="main">
-          
       <Paper className="paper">
         <div className="tableWrapper">
           <Table className="table">
@@ -82,23 +91,21 @@ export default function EnhancedTable() {
             <TableBody>
               {getActors().slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, index) => {
                 return(
-                <TableRow>
+                <TableRow key={index}>
                   <TableCell align="left">{row.digghet} </TableCell>
-                  <div className={classes.root}>
                   <TableCell align="left">
                     <ExpansionPanel>
                       <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
-                        <Typography className={classes.heading} align="left">{row.fornavn}</Typography>
+                        <Typography className={classes.heading}>{row.fornavn}</Typography>
                       </ExpansionPanelSummary>
                       <ExpansionPanelDetails>
                         <Typography>
-                        {row.fornavn} ble født i {row.fodt}.
+                        Mr. {row.etternavn} was born in {row.fodt}. He has chosen the profession of {row.yrke.toLowerCase()}. Husk å legge til utkommentert funksjon nederst.
                         </Typography>
                       </ExpansionPanelDetails>
                     </ExpansionPanel>
                   </TableCell>
-                  </div>
-                  <TableCell className='rowInTable' align="left">{row.etternavn}</TableCell>
+                  <TableCell align="left">{row.etternavn}</TableCell>
                   <TableCell align="left" >{row.fodt}</TableCell>  
                 </TableRow>
                     );
@@ -126,5 +133,9 @@ export default function EnhancedTable() {
   );
 }
 
+// {row.fornavn} is a/an {row.profession}.
 //<TableCell className='rowInTable' align="left" onClick={() => explorePerson(row)} on>{row.fornavn}</TableCell>
 //<TableCell className='rowInTable' align="left" onClick={() => explorePerson(row)}>{row.etternavn}</TableCell>
+
+//Utkommentert funksjon som skal legges inn: 
+//{evaluateRating(row.rating)}.

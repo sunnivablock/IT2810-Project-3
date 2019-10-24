@@ -4,10 +4,10 @@ import { bindActionCreators } from 'redux';
 
 import TextField from '@material-ui/core/TextField';
 import '../App.css'
-import {getSearch} from '../reducers/reducer';
-import {searchSuccess, searchField, SearchSuccess, SearchPending} from '../actions/index'
-import SelectInput from '@material-ui/core/Select/SelectInput';
+import {SearchSuccess} from '../actions/index'
 import Select from './Select'
+import searchLogo from '../search-icon.png'
+
 
 
 class Search extends Component {
@@ -150,8 +150,9 @@ class Search extends Component {
        
          return (
           
-            <div className="searchContainer">
-            
+            <div className="search">
+              <p className='searchHead'>SEARCH FOR PERSON</p>
+              <img src={searchLogo} className="search-logo" alt="logo"/>
                 <TextField
                 id="Rating"
                 label="Rating"
