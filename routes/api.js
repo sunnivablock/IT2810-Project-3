@@ -24,8 +24,7 @@ router.get('/persons', async (req, res, next) => {
     content.firstName = {$regex: RegExp(req.query.firstName), $options:'-i'};
   }
   if (req.query.rating) {
-    var mellom = Integer.parseInt(req.query.rating)
-    content.rating = {$regex: RegExp(mellom), $options:'-i'};
+    content.rating = {$regex: RegExp(req.query.rating), $options:'-i'};
     
   }
   if (req.query.profession) {
