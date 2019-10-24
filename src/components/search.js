@@ -1,14 +1,10 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-
 import TextField from '@material-ui/core/TextField';
 import '../App.css'
 import {SearchSuccess} from '../actions/index'
 import Select from './Select'
 import searchLogo from '../search-icon.png'
-
-
 
 class Search extends Component {
  
@@ -32,9 +28,6 @@ class Search extends Component {
   }
   } 
 }
-    
-   
-
       handleFirstName(e) {
         let value = e.target.value;
         this.setState( prevState => ({ values : 
@@ -142,15 +135,11 @@ class Search extends Component {
            }
         this.props.dispatch(SearchSuccess(object))
        }
-   
-    
       render() {
-       
-        
-       
+      
          return (
           
-            <div className="search">
+            <div className="searchContainer">
               <p className='searchHead'>SEARCH FOR PERSON</p>
               <img src={searchLogo} className="search-logo" alt="logo"/>
                 <TextField
@@ -177,6 +166,7 @@ class Search extends Component {
                 onChange={this.handleLastName}
                 margin="normal"
                 />
+                
                 <TextField
                 id="Født"
                 label="Født"
@@ -184,21 +174,27 @@ class Search extends Component {
                 className="searchField"
                 onChange={this.handleYear}
                 margin="normal"/>
-                <Select 
-                name={'Sorting'}
-                options = {["rating","firstName", "lastName",  "year"]} 
-                value = {this.state.values.Sorting}
-                placeholder = {'Sorting'}
-                handleChange = {this.handleSorting}
-                /> 
-                <Select 
-                name={'SortDirection'}
-                options = {["asc","desc"]} 
-                value = {this.state.values.SortDirection}
-                placeholder = {'SortDirection'}
-                handleChange = {this.handleSortDirection}
-                /> 
+                
+                <div className='dropDown'>
+                  <Select 
+                  name={'Sorting'}
+                  className={"custom-select"}
+                  options = {["RATING","FIRST NAME", "LAST NAME",  "YEAR"]} 
+                  value = {this.state.values.Sorting}
+                  placeholder = {'SORTING'}
+                  handleChange = {this.handleSorting}
+                  /> 
+                  <Select 
+                  name={'SortDirection'}
+                  className={"custom-select"}
+                  options = {["ASCENDING","DESCENDING"]} 
+                  value = {this.state.values.SortDirection}
+                  placeholder = {'DIRECTION'}
+                  handleChange = {this.handleSortDirection}
+                  /> 
+              </div>
             </div>
+            
          )
      }
    }
