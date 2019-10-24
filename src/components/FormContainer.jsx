@@ -30,7 +30,7 @@ class FormContainer extends Component {
     this.handleInput = this.handleInput.bind(this);
     this.handleRating = this.handleRating.bind(this);
     this.addRatingOptions = this.addRatingOptions.bind(this);
-    //this.checkEnabled = this.checkEnabled.bind(this);
+    
   }
 
   /* This life cycle hook gets executed when the component mounts */
@@ -93,7 +93,6 @@ class FormContainer extends Component {
   }
 
   handleFormSubmit = () => {
-    console.log("kommer inn i handleFormSubmit")
     let personData = this.state.newPerson;
     console.log(personData)
     axios.post('http://localhost:8000/api/persons', personData)
@@ -192,6 +191,10 @@ render() {
       </form>
   );
 }
+}
+
+const buttonStyle = {
+margin : '20px 5px 5px 5px',
 }
 
 export default FormContainer;

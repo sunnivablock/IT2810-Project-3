@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 const bodyParser = require('body-parser');
 const routes = require('../routes/api');
-//const path = require('path');
 const mongoose = require('mongoose');
 const url = "mongodb://it2810-09.idi.ntnu.no:27017/Gutta"
 const apiPort = 8000

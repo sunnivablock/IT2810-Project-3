@@ -8,7 +8,6 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import TablePagination from '@material-ui/core/TablePagination';
 import getActors from './data';
-
 import { makeStyles } from '@material-ui/core/styles';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
@@ -53,35 +52,39 @@ function HeadOfTable() {
   );
 }
 
+
+
+
 export default function EnhancedTable() {
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
-  //onClick={console.log("Person clicked")}
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
 
   const handleChangeRowsPerPage = event => {
-    setRowsPerPage(+event.target.value);
     setPage(0);
+    setRowsPerPage(+event.target.value);
   };
-  //Når lagringen av rating har blitt gjort om til int i databasen, må funksjonen under kommenteres inn :-)
-  /*function evaluateRating(rating){
-    if(parseInt(rating)<30){
+ 
+  function evaluateRating(rating){
+    console.log(rating);
+    if(rating<30){
         return("This person is rated as below average");
     }
-    else if(29<parseInt(rating)<70){
+    else if(29<rating<70){
         return("This person is rated as average");
     }
-    else if(69<parseInt(rating)<90){
+    else if(69<rating<90){
         return("This person is rated as pretty good looking");
     }
     else{
         return("This person is rated as really damn hot");
     }
-  }*/
+  }
+
   return (
     <div className="main">
       <Paper className="paper">
@@ -89,7 +92,7 @@ export default function EnhancedTable() {
           <Table className="table">
             <HeadOfTable/>
             <TableBody>
-              {getActors().slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, index) => {
+              { getActors().slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, index) => {
                 return(
                 <TableRow key={index}>
                   <TableCell align="left">{row.digghet} </TableCell>
@@ -100,7 +103,7 @@ export default function EnhancedTable() {
                       </ExpansionPanelSummary>
                       <ExpansionPanelDetails>
                         <Typography>
-                        Mr. {row.etternavn} was born in {row.fodt}. He has chosen the profession of {row.yrke.toLowerCase()}. Husk å legge til utkommentert funksjon nederst.
+                        Mr. {row.etternavn} was born in {row.fodt}. He has chosen the profession of {row.yrke.toLowerCase()}. {evaluateRating(row.digghet)}.
                         </Typography>
                       </ExpansionPanelDetails>
                     </ExpansionPanel>
@@ -114,7 +117,7 @@ export default function EnhancedTable() {
           </Table>
         </div>
           <TablePagination
-          rowsPerPageOptions={[5, 10, 50]}
+          rowsPerPageOptions={[5, 10, 20]}
           count={getActors().length}
           component="div"
           rowsPerPage={rowsPerPage}
@@ -138,4 +141,4 @@ export default function EnhancedTable() {
 //<TableCell className='rowInTable' align="left" onClick={() => explorePerson(row)}>{row.etternavn}</TableCell>
 
 //Utkommentert funksjon som skal legges inn: 
-//{evaluateRating(row.rating)}.
+//.

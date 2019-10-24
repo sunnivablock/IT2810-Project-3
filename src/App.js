@@ -10,7 +10,6 @@ import fetchActorsAction from './components/fetchActors'
 import {getActorsError, getActorsPending} from './reducers/reducer'
 import FormContainer from './components/FormContainer'
 import GraphContainer from './components/graphChart/GraphContainer'
-
 import fetchTopActorsAction from './components/fetchTopActors'
 
 import Search from './components/search'
@@ -25,7 +24,7 @@ class App extends Component {
     this.fire= this.fire.bind(this);
     this.state = {
       values:{
-      rating: '',
+      rating: "",
       firstName: '',
       lastName: '',
       year: '',
@@ -64,8 +63,8 @@ class App extends Component {
 
    handleButtonClick() {
       this.setState({values:{firstName: this.props.values.Fornavn, 
-        lastName:this.props.values.Etternavn, year:this.props.values.Født,
-        rating:this.props.values.Rating, Sorting:this.props.values.Sorting,
+        lastName:this.props.values.Etternavn, year:parseInt(this.props.values.Født),
+        rating:parseInt(this.props.values.Rating), Sorting:this.props.values.Sorting,
         SortDirection:this.props.values.SortDirection}},this.fire)
    }
 
@@ -109,7 +108,6 @@ class App extends Component {
 
 
 const mapStateToProps = state => {
-  console.log(state)
   return {
   actors: state.actors.actors,
   topactors: state.topactors.topactors,
