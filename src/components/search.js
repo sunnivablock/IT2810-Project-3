@@ -143,6 +143,7 @@ class Search extends Component {
               <p className='searchHead'>SEARCH FOR PERSON</p>
               <img src={searchLogo} className="search-logo" alt="logo"/>
                 <TextField
+                className={'searchRating'}
                 id="Rating"
                 label="Rating"
                 value={this.state.values.rating}
@@ -151,6 +152,7 @@ class Search extends Component {
                 margin="normal"
                 />
                 <TextField
+                className={'searchFirstName'}
                 id="Fornavn"
                 label="Fornavn"
                 value={this.state.values.firstName}
@@ -159,6 +161,7 @@ class Search extends Component {
                 margin="normal"
                 />
                 <TextField
+                className={'searchLastName'}
                 id="Etternavn"
                 label="Etternavn"
                 value={this.state.values.lastName}
@@ -168,6 +171,7 @@ class Search extends Component {
                 />
                 
                 <TextField
+                className={'searchYear'}
                 id="Født"
                 label="Født"
                 value={this.state.values.year}
