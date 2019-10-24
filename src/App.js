@@ -80,17 +80,16 @@ class App extends Component {
               <div className="App">
                   <Header/>
                   <div className="mainContent">
-                    
                     <div className="search">
                       <Search />
                       <Button 
                         title = "APPLY"
+                        id={'applyButton'}
                         type = {'button' }
                         action={this.handleButtonClick}
                         className = {'applyButton'}
                       />
                     </div> 
-                    
                     <div className="table1">
                       <Table/>
                     </div>
