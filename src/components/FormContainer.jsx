@@ -106,15 +106,6 @@ class FormContainer extends Component {
       })
   }
 
-  submitResponse(){
-    console.log("Submit button pushed")
-  }
-/*
-  checkEnabled(){
-    
-    return isEnabled;
-  }
-*/
   handleClearForm(e) {
     // Logic for resetting the form
     e.preventDefault(); //prevents the page from being refreshed on form submission, which is the default form behavior.
@@ -127,46 +118,56 @@ class FormContainer extends Component {
         rating: ''
       },
     })
-    //console.log(this.state.newPerson);
 }
 
 render() {
   const { firstName, lastName, profession, year, rating } = this.state.newPerson;
-  const isEnabled = firstName.length > 0 && lastName.length > 0 && profession.length > 0 && year !==0 && 0<rating<101;
-    //
+  const isEnabled = firstName !=="" && lastName !=="" && profession !=="" && year !=="" && rating !=="";
+  
   return (
       <form className="formContainer">
         <h2 className='formHeader'>ADD NEW PERSON</h2>
         
-        <Input inputType={'text'}
+        <Input 
+          inputType={'text'}
+          className={'firstNameInput'}
           title= {'First name '} 
           name= {'firstName'}
           value={this.state.newPerson.firstName} 
           placeholder = {'John'}
           handleChange = {this.handleFirstName}/> {/* First name of the user */}
         
-        <Input inputType={'text'}
+        <Input 
+          inputType={'text'}
+          className={'lastNameInput'}
           title= {'Last name '} 
           name= {'lastName'}
           value={this.state.newPerson.lastName} 
           placeholder = {'Smith'}
           handleChange = {this.handleLastName}/> {/* Last name of the user */}
 
-        <Input inputType={'number'} 
+        <Input 
+          inputType={'number'} 
           name={'age'}
+          className={'ageInput'}
           title= {'Age '} 
+          maxLength = {'4'}
           value={this.state.newPerson.age} 
           placeholder = {'1900'}
           handleChange={this.handleAge} /> {/* Age */} 
         
-        <Input inputType={'text'} 
+        <Input 
+          inputType={'text'} 
+          className={'professionInput'}
           name={'profession'}
           title= {'Profession '} 
           value={this.state.newPerson.profession} 
           placeholder = {'Pimp'}
           handleChange={this.handleProfession} /> {/* Profession */} 
         
-        <Select title={'Rating'}
+        <Select 
+          title={'Rating'}
+          className={'ratingInput'}
           name={'rating'}
           options = {this.addRatingOptions()} 
           value = {this.state.newPerson.rating}
@@ -176,10 +177,9 @@ render() {
 
         <Button 
           action = {this.handleFormSubmit}
-          type = {'primary'} 
-          disabled = {!isEnabled}
+          type = {'primary'}
           title = {'Submit'} 
-          onClick = {this.submitResponse}
+          disabled = {!isEnabled}
           style = {buttonStyle}/> { /*Submit */ }
       
         <Button 
@@ -187,17 +187,24 @@ render() {
           type = {'secondary'}
           title = {'Clear'}
           style = {buttonStyle}/> {/* Clear the form */}
-
+        
       </form>
   );
 }
 }
-
+/*<button
+          disabled = {true}
+          title = {"hey boo"}
+          onClick = {console.log("Random knapp trykket")}
+        />*/
 //!(this.checkEnabled())
-
+//onClick = {this.submitResponse}
 const buttonStyle = {
-margin : '5px 5px 5px 5px'
+margin : '20px 5px 5px 5px',
 }
-
+/*backgroundColor: '#282c34',
+color: 'white',
+marginTop: '20px',
+padding: '5px',*/
 export default FormContainer;
 

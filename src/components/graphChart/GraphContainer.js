@@ -24,11 +24,10 @@ class GraphContainer extends Component{
 				lineSpacing: 2,
 				text: "BEST RATED",
 				backgroundColor: '#282c34',
-				fontWeight: "normal",
+				fontWeight: "bold",
 				fontColor: "white",
 				margin: 10,
-				padding: 10,
-				fontWeight: 'bold'
+				padding: 10
 			},
 			axisX: {
 				title: "PERSON",
@@ -45,9 +44,9 @@ class GraphContainer extends Component{
 			data: [{
 				type: "bar",
 				dataPoints: [
-					/*{ y: parseInt(getHotList()[0].rating) , label: getHotList()[0].firstName },
+					{ y: parseInt(getHotList()[0].rating) , label: getHotList()[0].firstName },
 					{ y: parseInt(getHotList()[1].rating) , label: getHotList()[1].firstName },
-					{ y: parseInt(getHotList()[2].rating) , label: getHotList()[2].firstName },*/
+					{ y: parseInt(getHotList()[2].rating) , label: getHotList()[2].firstName },
 				]
 			}]
 		}

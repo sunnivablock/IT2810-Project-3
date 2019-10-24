@@ -6,7 +6,6 @@ import * as serviceWorker from './serviceWorker';
 import {Provider} from 'react-redux';
 import store from './store/index.js'
 import GraphContainer from './components/graphChart/GraphContainer'
-import Search from './components/search2'
 
 
 render(

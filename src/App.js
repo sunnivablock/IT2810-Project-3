@@ -10,10 +10,9 @@ import fetchActorsAction from './components/fetchActors'
 import {getActorsError, getActorsPending} from './reducers/reducer'
 import FormContainer from './components/FormContainer'
 import GraphContainer from './components/graphChart/GraphContainer'
-import PersonInfo from './components/personInfo'
+import searchLogo from './search-icon.png'
 //var GraphContainer = require("./components/GraphContainer");
 //import Search from './components/search2'
-import { Select } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 
 
@@ -89,66 +88,65 @@ class App extends Component {
        }))
    }
 
-
-
-
   render() {
-    console.log(this.state.newPerson)
-    console.log(this.state.values)
-     const { error, fetchActors} = this.props;
+    //console.log(this.state.newPerson)
+    //console.log(this.state.values)
+     const { error} = this.props;
      if(!this.shouldComponentRender()) return (<div>Appen laster ikke</div>)
     //console.log(TextFields())
      getActors2()
 
-     
-    
       return (
         getHotList(),
           <div>
               {error && <span >{error}</span>}
               <div className="App">
                   <Header/>
-                  
-                  
                   <div className="mainContent">
-                    <div className="search">
+
+                      <div className="search">
+                        <p className='searchHead'>SEARCH FOR PERSON</p>
+                        <img src={searchLogo} className="search-logo" alt="logo"/>
+                        
+                        <TextField
+                        id="Rating"
+                        label="Rating"
+                        value={this.state.values.rating}
+                        className="searchField"
+                        onChange={this.handleRating}
+                        margin='none'
+                        />
+                        <TextField
+                        id="First name"
+                        label="First Name"
+                        value={this.state.values.firstName}
+                        className="searchField"
+                        onChange={this.handleFirstName}
+                        margin='none'
+                        />
+                        <TextField
+                        id="Etternavn"
+                        label="Last Name"
+                        value={this.state.values.lastName}
+                        className="searchField"
+                        onChange={this.handleLastName}
+                        margin='none'
+                        />
+                        <TextField
+                        id="Født"
+                        label="Year"
+                        value={this.state.values.year}
+                        className="searchField"
+                        onChange={this.handleYear}
+                        margin='none'
+                        />
+                      </div>
+                    
+                      <div className="table1">
+                        <Table/>
+                      </div>
+
                   
-                      <TextField
-                      id="Rating"
-                      label="Rating"
-                      value={this.state.values.rating}
-                      className="searchField"
-                      onChange={this.handleRating}
-                      margin="normal"
-                      />
-                      <TextField
-                      id="First name"
-                      label="First Name"
-                      value={this.state.values.firstName}
-                      className="searchField"
-                      onChange={this.handleFirstName}
-                      margin="normal"
-                      />
-                      <TextField
-                      id="Etternavn"
-                      label="Last Name"
-                      value={this.state.values.lastName}
-                      className="searchField"
-                      onChange={this.handleLastName}
-                      margin="normal"
-                      />
-                      <TextField
-                      id="Født"
-                      label="Year"
-                      value={this.state.values.year}
-                      className="searchField"
-                      onChange={this.handleYear}
-                      margin="normal"/>
-                    </div>
-                  
-                    <div className="table1">
-                      <Table/>
-                    </div>
                     <div className="formContainer">
                       <FormContainer/>
                     </div>

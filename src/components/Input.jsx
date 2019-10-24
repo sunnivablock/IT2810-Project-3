@@ -6,10 +6,11 @@ const Input = (props) => {
             <label htmlFor={props.name} className="form-label">{props.title}
             </label>
             <input
-            className="form-control"
+            className={props.className}
             id={props.name}
             name={props.name}
             type={props.type}
+            maxLength={props.maxLength}
             value={props.value}
             onChange={props.handleChange}
             placeholder={props.placeholder} 
