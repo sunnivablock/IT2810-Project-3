@@ -84,6 +84,7 @@ class FormContainer extends Component {
   }
 
   handleFormSubmit = () => {
+    console.log("kommer inn i handleFormSubmit")
     let personData = this.state.newPerson;
     console.log(personData)
     axios.post('http://localhost:8000/api/persons', personData)

@@ -1,8 +1,9 @@
-import actorsReducer from './reducer'
+import {actorsReducer, topActorsReducer} from './reducer'
 
 import {combineReducers} from 'redux';
 
 const rootReducer = combineReducers({
-  actors: actorsReducer
+  actors: actorsReducer,
+  topactors: topActorsReducer
 });
 export default rootReducer

@@ -1,6 +1,10 @@
 const express = require ('express');
 const router = express.Router();
 const Person = require('../models/persons');
+var cors = require('cors')
+
+var cors = require('cors')
+
 
 router.get('/persons', async (req, res, next) => {
 
@@ -20,7 +24,8 @@ router.get('/persons', async (req, res, next) => {
     content.firstName = {$regex: RegExp(req.query.firstName), $options:'-i'};
   }
   if (req.query.rating) {
-    content.rating = {$regex: RegExp(req.query.rating), $options:'-i'};
+    var mellom = Integer.parseInt(req.query.rating)
+    content.rating = {$regex: RegExp(mellom), $options:'-i'};
     
   }
   if (req.query.profession) {
@@ -39,12 +44,13 @@ router.post('/persons', (req, res, next) => {
   console.log(req.body)
     if(req.body){
         Person.create(req.body)
+        res.json("Added!")
       }else {
         res.json({
           error: "Something went wrong"
         })
+        return;
       }
-      next()
 });
 
 

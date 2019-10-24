@@ -10,6 +10,8 @@ import fetchActorsAction from './components/fetchActors'
 import {getActorsError, getActorsPending} from './reducers/reducer'
 import FormContainer from './components/FormContainer'
 import GraphContainer from './components/graphChart/GraphContainer'
+import fetchTopActorsAction from './components/fetchTopActors'
+import {getTopActorsError, getTopActorsPending, getTopActors} from './reducers/reducer'
 
 
 
@@ -43,6 +45,9 @@ class App extends Component {
   componentDidMount(){
     const {fetchActors}=this.props;
     fetchActors(this.generateURLQuery())
+    const {fetchTopActors}=this.props;
+    fetchTopActors('/api/persons?sort=rating')
+    
   }
 
 
@@ -82,18 +87,22 @@ class App extends Component {
 }
 
 
-const mapStateToProps = state => ({
+const mapStateToProps = state => {
+  console.log(state)
+  return {
   actors: state.actors.actors,
+  topactors: state.topactors.topactors,
   error: getActorsError(state),
   pending: getActorsPending(state)
  
-})
+}}
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  fetchActors: fetchActorsAction
+  fetchActors: fetchActorsAction,
+  fetchTopActors: fetchTopActorsAction
 }, dispatch)
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(App );
+)(App);
