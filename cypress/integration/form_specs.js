@@ -26,7 +26,7 @@ describe('Fill form', function() {
         .select('48')
         .should('have.value', '48')    
 
-    cy.get('button.btn.btn-primary').click()
+    cy.get('Button.submitButton').click()
 
     cy.url().should('include', '/?firstName=Ola&lastName=Nordmann&age=1975&profession=Doorman&rating=48')
 

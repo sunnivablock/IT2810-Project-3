@@ -6,8 +6,6 @@ import {SearchSuccess} from '../actions/index'
 import Select from './Select'
 import searchLogo from '../search-icon.png'
 
-
-
 class Search extends Component {
  
   constructor(props){
@@ -30,9 +28,6 @@ class Search extends Component {
   }
   } 
 }
-    
-   
-
       handleFirstName(e) {
         let value = e.target.value;
         this.setState( prevState => ({ values : 
@@ -140,18 +135,15 @@ class Search extends Component {
            }
         this.props.dispatch(SearchSuccess(object))
        }
-   
-    
       render() {
-       
-        
-       
+      
          return (
           
-            <div className="search">
+            <div className="searchContainer">
               <p className='searchHead'>SEARCH FOR PERSON</p>
               <img src={searchLogo} className="search-logo" alt="logo"/>
                 <TextField
+                className={'searchRating'}
                 id="Rating"
                 label="Rating"
                 value={this.state.values.rating}
@@ -160,6 +152,7 @@ class Search extends Component {
                 margin="normal"
                 />
                 <TextField
+                className={'searchFirstName'}
                 id="Fornavn"
                 label="Fornavn"
                 value={this.state.values.firstName}
@@ -168,6 +161,7 @@ class Search extends Component {
                 margin="normal"
                 />
                 <TextField
+                className={'searchLastName'}
                 id="Etternavn"
                 label="Etternavn"
                 value={this.state.values.lastName}
@@ -175,28 +169,38 @@ class Search extends Component {
                 onChange={this.handleLastName}
                 margin="normal"
                 />
+                
                 <TextField
+                className={'searchYear'}
                 id="Født"
                 label="Født"
                 value={this.state.values.year}
                 className="searchField"
                 onChange={this.handleYear}
                 margin="normal"/>
-                <Select 
-                name={'Sorting'}
-                options = {["rating","firstName", "lastName",  "year"]} 
-                value = {this.state.values.Sorting}
-                placeholder = {'Sorting'}
-                handleChange = {this.handleSorting}
-                /> 
-                <Select 
-                name={'SortDirection'}
-                options = {["asc","desc"]} 
-                value = {this.state.values.SortDirection}
-                placeholder = {'SortDirection'}
-                handleChange = {this.handleSortDirection}
-                /> 
+                
+                <div className='dropDown'>
+                  <Select 
+                  name={'Sorting'}
+                  className={"custom-select"}
+                  id={"Sorting"}
+                  options = {["rating","firstName", "lastName",  "year"]} 
+                  value = {this.state.values.Sorting}
+                  placeholder = {'SORTING'}
+                  handleChange = {this.handleSorting}
+                  /> 
+                  <Select 
+                  name={'SortDirection'}
+                  id={"SortDirection"}
+                  className={"custom-select"}
+                  options = {["asc","desc"]} 
+                  value = {this.state.values.SortDirection}
+                  placeholder = {'DIRECTION'}
+                  handleChange = {this.handleSortDirection}
+                  /> 
+              </div>
             </div>
+            
          )
      }
    }

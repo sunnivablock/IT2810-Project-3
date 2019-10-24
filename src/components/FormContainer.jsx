@@ -177,16 +177,16 @@ render() {
 
         <Button 
           action = {this.handleFormSubmit}
+          className = {'submitButton'}
           type = {'primary'}
           title = {'Submit'} 
-          disabled = {!isEnabled}
-          style = {buttonStyle}/> { /*Submit */ }
+          disabled = {!isEnabled}/> { /*Submit */ }
       
         <Button 
           action = {this.handleClearForm}
+          className = {'clearButton'}
           type = {'secondary'}
-          title = {'Clear'}
-          style = {buttonStyle}/> {/* Clear the form */}
+          title = {'Clear'}/> {/* Clear the form */}
         
       </form>
   );

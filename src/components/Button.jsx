@@ -3,10 +3,12 @@ import React from 'react';
 const Button = (props) => {
     return(
         <button 
+            className = {props.className}
             style = {props.style} 
-            className = {props.type==='primary'? 'btn btn-primary' : 'btn btn-secondary'}
             onClick = {props.action}
-            disabled = {props.disabled}>
+            disabled = {props.disabled}
+            id={props.id}>
+            
             {props.title} 
         </button>
     )

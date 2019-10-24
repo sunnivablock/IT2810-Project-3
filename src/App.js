@@ -11,11 +11,9 @@ import {getActorsError, getActorsPending} from './reducers/reducer'
 import FormContainer from './components/FormContainer'
 import GraphContainer from './components/graphChart/GraphContainer'
 import fetchTopActorsAction from './components/fetchTopActors'
+
 import Search from './components/search'
 import Button from './components/Button';
-
-
-
 
 
 class App extends Component {
@@ -46,14 +44,11 @@ class App extends Component {
         
 };
 
-
   componentDidMount(){
     const {fetchActors}=this.props;
     fetchActors(this.generateURLQuery())
     const {fetchTopActors}=this.props;
     fetchTopActors('/api/persons?sort=rating')
-
-    
   }
 
   shouldComponentRender(){
@@ -84,12 +79,16 @@ class App extends Component {
               <div className="App">
                   <Header/>
                   <div className="mainContent">
-                    <Search />
-                    <Button 
-                      title = "Knapp"
-                      type = {'button' }
-                      action={this.handleButtonClick}
-                    /> 
+                    <div className="search">
+                      <Search />
+                      <Button 
+                        title = "APPLY"
+                        id={'applyButton'}
+                        type = {'button' }
+                        action={this.handleButtonClick}
+                        className = {'applyButton'}
+                      />
+                    </div> 
                     <div className="table1">
                       <Table/>
                     </div>
