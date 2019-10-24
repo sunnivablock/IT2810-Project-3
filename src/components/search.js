@@ -179,15 +179,17 @@ class Search extends Component {
                   <Select 
                   name={'Sorting'}
                   className={"custom-select"}
-                  options = {["RATING","FIRST NAME", "LAST NAME",  "YEAR"]} 
+                  id={"Sorting"}
+                  options = {["rating","firstName", "lastName",  "year"]} 
                   value = {this.state.values.Sorting}
                   placeholder = {'SORTING'}
                   handleChange = {this.handleSorting}
                   /> 
                   <Select 
                   name={'SortDirection'}
+                  id={"SortDirection"}
                   className={"custom-select"}
-                  options = {["ASCENDING","DESCENDING"]} 
+                  options = {["asc","desc"]} 
                   value = {this.state.values.SortDirection}
                   placeholder = {'DIRECTION'}
                   handleChange = {this.handleSortDirection}
