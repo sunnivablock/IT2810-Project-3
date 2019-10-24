@@ -24,14 +24,13 @@ router.get('/persons', async (req, res, next) => {
     content.firstName = {$regex: RegExp(req.query.firstName), $options:'-i'};
   }
   if (req.query.rating) {
-    content.rating = {$regex: RegExp(Int32.Parse(req.query.rating)), $options:'-i'};
-    
+    content.rating = req.query.rating;
   }
   if (req.query.profession) {
     content.profession = {$regex: RegExp(req.query.profession), $options:'-i'};
   }
-  if (req.query.year) {
-    content.year = {$regex: RegExp(req.query.year), $options:'-i'};
+   if (req.query.year) {
+    content.year = req.query.year;
   }
   
   const person = await Person.find(content).sort({[sorting]:sortDirection});

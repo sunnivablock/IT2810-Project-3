@@ -12,8 +12,8 @@ const dataSchema = new Schema({
     firstName: String,
     lastName: String,
     profession: String,
-    year: String,
-    rating: String
+    year: Number,
+    rating: Number
   },
   { timestamp: true, collection : 'Krutt' }
 );
