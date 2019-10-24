@@ -10,7 +10,7 @@ import fetchActorsAction from './components/fetchActors'
 import {getActorsError, getActorsPending} from './reducers/reducer'
 import FormContainer from './components/FormContainer'
 import GraphContainer from './components/graphChart/GraphContainer'
-import Search from './components/search2'
+import Search from './components/search'
 import Button from './components/Button';
 
 
@@ -21,7 +21,6 @@ class App extends Component {
     this.handleButtonClick = this.handleButtonClick.bind(this);
     this.fire= this.fire.bind(this);
     this.state = {
-      
       values:{
       rating: '',
       firstName: '',
@@ -34,7 +33,6 @@ class App extends Component {
   }
 
   generateURLQuery = () => {
-    console.log(this.state.values.Sorting)
     return "/api/persons?" + ((!this.state.values.firstName) ? '' : `&firstName=${this.state.values.firstName}`)+ 
         ((!this.state.values.lastName) ? '' : `&lastName=${this.state.values.lastName}`) +
         ((!this.state.values.rating) ? '' : `&rating=${this.state.values.rating}`) +
@@ -62,16 +60,10 @@ class App extends Component {
   }
 
    handleButtonClick() {
-    // current=this.state.values
-     
-     console.log(this.props.values)
       this.setState({values:{firstName: this.props.values.Fornavn, 
         lastName:this.props.values.Etternavn, year:this.props.values.Født,
         rating:this.props.values.Rating, Sorting:this.props.values.Sorting,
         SortDirection:this.props.values.SortDirection}},this.fire)
-        
-        
-       
    }
 
   render() {
@@ -85,12 +77,12 @@ class App extends Component {
               <div className="App">
                   <Header/>
                   <div className="mainContent">
-                    <Search/>
-                     <Button 
+                    <Search />
+                    <Button 
                       title = "Knapp"
                       type = {'button' }
                       action={this.handleButtonClick}
-                      /> 
+                    /> 
                     <div className="table1">
                       <Table/>
                     </div>
