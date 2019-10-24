@@ -170,7 +170,7 @@ render() {
           name={'rating'}
           options = {this.addRatingOptions()} 
           value = {this.state.newPerson.rating}
-          placeholder = {'69'}
+          placeholder = {'55'}
           handleChange = {this.handleRating}
           /> {/* Rating selection */}
 

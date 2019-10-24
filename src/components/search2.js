@@ -5,26 +5,151 @@ import { bindActionCreators } from 'redux';
 import TextField from '@material-ui/core/TextField';
 import '../App.css'
 import {getSearch} from '../reducers/reducer';
-import {searchSuccess, searchField} from '../actions/index'
+import {searchSuccess, searchField, SearchSuccess, SearchPending} from '../actions/index'
+import SelectInput from '@material-ui/core/Select/SelectInput';
+import Select from './Select'
 
 
-
-/*class Search extends Component {
+class Search extends Component {
  
-
-
+  constructor(props){
+    super(props);
+    console.log(this.props.values)
+       
+    this.handleFirstName = this.handleFirstName.bind(this);
+    this.handleLastName = this.handleLastName.bind(this);
+    this.handleYear = this.handleYear.bind(this);
+    this.handleRating = this.handleRating.bind(this);
+    this.handleSorting=this.handleSorting.bind(this);
+    this.handleSortDirection=this.handleSortDirection.bind(this);
+    this.state = {
+      values:{
+      rating: '',
+      firstName: '',
+      lastName: '',
+      year: '',
+      Sorting:'',
+      SortDirection:''
+  }
+  } 
+}
     
-    onChange = e => {
-      this.props.searchField(e.target.value)
-    }
+   
 
+      handleFirstName(e) {
+        let value = e.target.value;
+        this.setState( prevState => ({ values : 
+             {...prevState.values, firstName: value
+             }
+           }) )
+           let object = {
+            Rating: this.props.values.Rating,
+            Fornavn: value,
+            Etternavn: this.props.values.Etternavn,
+            Født: this.props.values.Født,
+            Sorting: this.props.values.Sorting,
+            SortDirection:this.props.values.SortDirection
+           }
+        this.props.dispatch(SearchSuccess(object))
+        console.log(this.props.values)
+       }
+    
+       handleLastName(e) {
+        let value = e.target.value;
+        //return value;
+        this.setState( prevState => ({ values : 
+             {...prevState.values, lastName: value
+             }
+           }))
+           let object = {
+            Rating: this.props.values.Rating,
+            Fornavn: this.props.values.Fornavn,
+            Etternavn: value,
+            Født: this.props.values.Født,
+            Sorting: this.props.values.Sorting,
+            SortDirection:this.props.values.SortDirection
+           }
+        this.props.dispatch(SearchSuccess(object))
+        console.log(this.props.values)
+       }
+    
+       handleYear(e) {
+        let value = e.target.value;
+        
+        this.setState( prevState => ({ values : 
+             {...prevState.values, year: value
+             }
+           }))
+           let object = {
+            Rating: this.props.values.Rating,
+            Fornavn: this.props.values.Fornavn,
+            Etternavn: this.props.values.Etternavn,
+            Født: value,
+            Sorting: this.props.values.Sorting,
+            SortDirection:this.props.values.SortDirection
+           }
+        this.props.dispatch(SearchSuccess(object))
+        console.log(this.props.values)
+       }
+    
+       handleRating(e) {
+        let value = e.target.value;
+        this.setState( prevState => ({ values : 
+             {...prevState.values, rating: value
+             }
+           }))
 
-    keyPressed = navn => event => {
-        if (event.key === "Enter") {
-            event.preventDefault()
-            this.props.getSearch(this.props.navn)
-        }
-      }
+           let object = {
+            Rating: value,
+            Fornavn: this.props.values.Fornavn,
+            Etternavn: this.props.values.Etternavn,
+            Født: this.props.values.Født,
+            Sorting: this.props.values.Sorting,
+            SortDirection:this.props.values.SortDirection
+           }
+        this.props.dispatch(SearchSuccess(object))
+        console.log(this.props.values)
+       }
+
+       handleSorting(e) {
+        let value = e.target.value;
+        console.log("Value",value)
+        this.setState( prevState => ({ values : 
+          {...prevState.values, Sorting: value
+          }
+        }))
+       
+
+           let object = {
+            Rating: this.props.values.Rating,
+            Fornavn: this.props.values.Fornavn,
+            Etternavn: this.props.values.Etternavn,
+            Født: this.props.values.Født,
+            Sorting: value,
+            SortDirection:this.props.values.SortDirection
+           }
+        this.props.dispatch(SearchSuccess(object))
+        console.log(this.props.values)
+       }
+
+       handleSortDirection(e) {
+        let value = e.target.value;
+        this.setState( prevState => ({ values : 
+          {...prevState.values, SortDirection: value
+          }
+        }))
+
+           let object = {
+            Rating: this.props.values.Rating,
+            Fornavn: this.props.values.Fornavn,
+            Etternavn: this.props.values.Etternavn,
+            Født: this.props.values.Født,
+            Sorting: this.props.values.Sorting,
+            SortDirection:value
+           }
+        this.props.dispatch(SearchSuccess(object))
+        console.log(this.props.values)
+       }
    
     
       render() {
@@ -40,38 +165,48 @@ import {searchSuccess, searchField} from '../actions/index'
                 <TextField
                 id="Rating"
                 label="Rating"
-                value={this.state.values.Rating}
+                value={this.state.values.rating}
                 className="searchField"
-                onChange={this.onChange()}
-                onKeyPress={this.keyPressed('Rating')}
+                onChange={this.handleRating}
                 margin="normal"
                 />
                 <TextField
                 id="Fornavn"
                 label="Fornavn"
-                value={values.Fornavn}
+                value={this.state.values.firstName}
                 className="searchField"
-                onChange={onChange()}
-                onKeyPress={keyPressed('firstName')}
+                onChange={this.handleFirstName}
                 margin="normal"
                 />
                 <TextField
                 id="Etternavn"
                 label="Etternavn"
-                value={values.Etternavn}
+                value={this.state.values.lastName}
                 className="searchField"
-                onChange={onChange()}
-                onKeyPress={keyPressed('lastName')}
+                onChange={this.handleLastName}
                 margin="normal"
                 />
                 <TextField
                 id="Født"
                 label="Født"
-                value={values.Født}
+                value={this.state.values.year}
                 className="searchField"
-                onChange={onChange()}
-                onKeyPress={keyPressed('year')}
+                onChange={this.handleYear}
                 margin="normal"/>
+                <Select 
+                name={'Sorting'}
+                options = {["rating","firstName", "lastName",  "year"]} 
+                value = {this.state.values.Sorting}
+                placeholder = {'Sorting'}
+                handleChange = {this.handleSorting}
+                /> 
+                <Select 
+                name={'SortDirection'}
+                options = {["asc","desc"]} 
+                value = {this.state.values.SortDirection}
+                placeholder = {'SortDirection'}
+                handleChange = {this.handleSortDirection}
+                /> 
             </div>
         </div>
          )
@@ -80,10 +215,7 @@ import {searchSuccess, searchField} from '../actions/index'
    
    
    const mapStateToProps = state => ({
-     
      values: state.values.values
    })
-   
-   
-   
-   export default connect(mapStateToProps, {searchField,getSearch})(Search)*/
+
+   export default connect(mapStateToProps)(Search)

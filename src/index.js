@@ -12,8 +12,7 @@ import Search from './components/search2'
 render(
     <Provider store={store}>
         <App />
-        <GraphContainer />
-        
+        <Search/>
     </Provider>,
 document.getElementById('root'));
 

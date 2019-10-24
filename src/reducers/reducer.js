@@ -12,11 +12,14 @@ const initialState = {
   }
   const initialStateSearch = {
     pending:false,
+    
     values:{ 
         Rating:'',
         Fornavn: '',
         Etternavn: '',
-        Født: ''
+        Født: '',
+        Sorting: '',
+        SortDirection:'asc',
       },
     error:null
     
@@ -66,11 +69,7 @@ export function searchReducer(state = initialStateSearch, action) {
               pending: false,
               error: action.error
           }
-      case SEARCH_FIELD:
-          return {
-              ...state,
-              text: action.payload 
-            }
+     
       default: 
           return state;
   }

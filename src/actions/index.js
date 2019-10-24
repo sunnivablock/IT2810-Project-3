@@ -8,7 +8,7 @@ export const FETCH_ACTORS_ERROR = 'FETCH_ACTORS_ERROR';
 export const SEARCH_PENDING = 'SEARCH_PENDING';
 export const SEARCH_SUCCESS = 'SEARCH_SUCCESS';
 export const SEARCH_ERROR = 'SEARCH_ERROR';
-export const SEARCH_FIELD = 'SEARCH_FIELD';
+
 
 export function fetchActorsPending() {
     return {
@@ -50,9 +50,3 @@ export function SearchError(error) {
     }
 }
 
-export const searchField = text => dispatch => {
-    dispatch ({
-        type: SEARCH_FIELD,
-        payload: text
-    })
-}
