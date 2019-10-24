@@ -88,6 +88,8 @@ class App extends Component {
                   <div className="mainContent">
                     <Search />
                     <Button 
+                      className = {'applyButton'}
+                      id={'applyButton'}
                       title = "Knapp"
                       type = {'button' }
                       action={this.handleButtonClick}
