@@ -50,19 +50,19 @@ class App extends Component {
     
   }
 
-
-
   shouldComponentRender(){
       if(this.pending === false) return false;
       return true;
   }
 
 
-  render() {
-     const { error, fetchActors} = this.props;
-     if(!this.shouldComponentRender()) return (<div>Appen laster ikke</div>)
+  render(){
+    const showPersonDetails = this.state.showPersonDetails;
+    const { error, fetchActors} = this.props;
+    if(!this.shouldComponentRender()) return (<div>Appen laster ikke</div>);
       
-     getActors2()
+    getActors2()
+    
       return (
         getHotList(),
           <div>
@@ -76,6 +76,7 @@ class App extends Component {
                     <div className="formContainer">
                       <FormContainer/>
                     </div>
+                      
                     <div className="graphContainer">
                       <GraphContainer/>
                     </div>
