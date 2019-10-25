@@ -1,6 +1,7 @@
 import {actorsReducer} from '../reducers/reducer'
 import * as types from '../actions/index'
 
+//Testing actorsReducer in reducers/reducer.js
 
 describe('actorsReducer', () => {
   it('should return the initial state', () => {
