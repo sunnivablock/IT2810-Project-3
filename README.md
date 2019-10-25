@@ -26,7 +26,7 @@ I dette prosjektet har vi valgt å innføre CI, slik at vi får en automatisert 
 Selv om dette ikke var et eksplisitt krav i dette prosjektet, har vi gjort nettsiden vår responsiv slik at den på en pen og fornuftig måte skalerer ved endring av nettsidens dimensjoner. Dette er testet på tre forskjellige enheter (en PC, et nettbrett og en iPhone 8+), i horisontal og vertikal visning. Jf. kravene fra forrige prosjekt, er det innført media queries, viewport, bilder som skalerer og flytende layout. 
 
 ### Testing
-For både ende-til-ende-testing og enhetstesting har vi benyttet oss av Cypress, et Javascript testrammeverk. Det er enkelt å installere og bruke. Cypress åpnes og kjøres fra root i prosjektmappen med kommandoen ./node_modules/.bin/cypress open. Disse må kjøres på localhost. Når Cypress launches, kan alle de individuelle testene kjøres herfra. Vi har skrevet tester for å sjekke hovedfunksjonaliteten på siden vår. Både table og graphChart er laget ut fra importerte komponenter, og det er derfor noe trøblete å kalle på feltene i disse komponentene. Vi tror likevel vi kom frem til en grei løsning for dette. Disse ligger under Cypress - integration. Disse ligger under Cypress - integration. 
+For både ende-til-ende-testing og enhetstesting har vi benyttet oss av Cypress, et Javascript testrammeverk. Det er enkelt å installere og bruke. Cypress åpnes og kjøres fra root i prosjektmappen med kommandoen `./node_modules/.bin/cypress open.` Disse må kjøres på localhost. Når Cypress launches, kan alle de individuelle testene kjøres herfra. Vi har skrevet tester for å sjekke hovedfunksjonaliteten på siden vår. Både table og graphChart er laget ut fra importerte komponenter, og det er derfor noe trøblete å kalle på feltene i disse komponentene. Vi tror likevel vi kom frem til en grei løsning for dette. Disse ligger under Cypress - integration. Disse ligger under Cypress - integration. 
 
 Vi har også denne gangen brukt Jest som testverkøty. Her har vi laget testmetoder for å teste actorsReducer, i reducer-klassen, for å sjekke at den håndterer ulike actions. Da reducere inneholder initialstate og en switch som skal endre applikasjonens state ved ulike actions definert av oss, er det er viktig å vite at de fungerer som de skal. 
 
@@ -52,21 +52,21 @@ Utviklingsprosjekter vil alltid ha potensiale for forbedring, og vi ser flere fo
 
 ## For å kjøre prosjektet:
 Stå i mappen du vil ha prosjektet i og kjør følgende kommandoer
-1. '<git clone https://gitlab.stud.idi.ntnu.no/IT2810-H19/teams/team-9/webprosjekt3.git >'
-2. npm install
-3. npm start
+1. `git clone https://gitlab.stud.idi.ntnu.no/IT2810-H19/teams/team-9/webprosjekt3.git`
+2. `npm install`
+3. `npm start`
 3. Siden skal automatisk kjøre i nettleser med url http://localhost:3000/ 
 
 
 For å kjøre testene:
 Jesttest:
 Stå i webprosjekt3 mappen og kjør:
-1. npm test tests/actorsReducer.test.js
+1. `npm test tests/actorsReducer.test.js `
 2. Testen kjøres og resultatet kommer opp i terminal
 
 cypress:
 Stå i webprosjekt3 mappen og kjør:
-1. ./node_modules/.bin/cypress open
+1. `./node_modules/.bin/cypress open`
 2. Åpner cypress, og trykker på de aktuelle testene for å kjøre de
 3. Testene kommer opp og kjører i eget vindu
 
