@@ -41,7 +41,7 @@
   padding: 0px !important;
   color: black !important;
   flex-grow: 1;
-  width: 10%;
+  width: 100%;
   border-radius: 4px;
   letter-spacing: 2px;
   background-color: white;
@@ -55,7 +55,16 @@
 .searchHead{
   display: none;
 }
-.searchField{
+.searchRating{
+  width: 100%;
+}
+.searchFirstName{
+  width: 100%;
+}
+.searchLastName{
+  width: 100%;
+}
+.searchYear{
   width: 100%;
 }
 
