@@ -65,7 +65,6 @@ export default function EnhancedTable() {
   };
  
   function evaluateRating(rating){
-    console.log(rating);
     if(rating<30){
         return("This person is rated as below average");
     }
