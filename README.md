@@ -58,13 +58,13 @@ Stå i mappen du vil ha prosjektet i og kjør følgende kommandoer
 3. Siden skal automatisk kjøre i nettleser med url http://localhost:3000/ 
 
 
-#####For å kjøre testene:
+##### For å kjøre testene:
 Jesttest:
 Stå i webprosjekt3 mappen og kjør:
 1. `npm test tests/actorsReducer.test.js `
 2. Testen kjøres og resultatet kommer opp i terminal
 
-#####cypress:
+##### cypress:
 Stå i webprosjekt3 mappen og kjør:
 1. `./node_modules/.bin/cypress open`
 2. Åpner cypress, og trykker på de aktuelle testene for å kjøre de
