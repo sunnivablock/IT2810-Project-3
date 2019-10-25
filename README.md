@@ -1,5 +1,5 @@
-#The Barometer
-##Readme - Prosjekt 3 
+# The Barometer
+## Readme - Prosjekt 3 
 I dette prosjektet har vi laget et barometer som rangerer mannlige kjendiser. 
 
 Nettsiden består av fire hoveddeler: Et søkefelt, en tabell med data, et skjema for input, og en grafisk visning av dataene. 
