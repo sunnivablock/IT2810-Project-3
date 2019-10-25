@@ -76,7 +76,6 @@ export default function EnhancedTable() {
     }
     else{
         return(" is rated as really damn hot");
-        console.log("Hot ja..")
     }
   }
 
