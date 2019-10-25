@@ -38,12 +38,9 @@ Vi har benyttet oss av git gjennom hele utviklingsprosessen. Vi har delt inn utv
 Vi har hatt som mål å følge de ulike konvensjonene som gjelder for de ulike teknologiene vi har benyttet oss av, og har i tillegg forsøkt å holde koden ryddig og mest mulig lettleselig. Kommentarer er også lagt inn for å forklare kode der det har føltes nødvendig. 
 
 ### Ressurser og tredjepartskomponenter
-1. https://canvasjs.com/javascript-charts/bar-chart-axis-scale-break/
-For grafisk visning av dataene har vi benyttet oss av canvasjs.com sin bar chart, og modifisert og tilpasset denne til vårt bruk. Her bruker vi REST APIet til å hente frem de aktuelle dataene, i stedet for fikserte datapunkter slik som i eksempelet. 
-2. https://material-ui.com/components/tables/
-Tabellen vår har vi basert på tabellkomponenten og tilhørende andre komponenter fra material-ui.com. Dette for å plassere dataene i en tabell, bla mellom de ulike tabellsidene, samt utvide enkelte rader for å vise detaljert informasjon. I tillegg har vi hentet input-komponentene i søkebaren vår fra material-ui, ettersom dette var en tredjepartskomponent som ser bra ut i vårt grensesnitt. Dog er ulempen ved å bruke slike komponenter at vi måtte overkjøre en del stilistiske attributt for å få disse til å passe inn i vår styling. 
-3. https://www.codementor.io/blizzerand/building-forms-using-react-everything-you-need-to-know-iz3eyoq4y
-Det brukerstyrte skjemaet vårt er bygd opp ved hjelp av dumme komponenter (Input, Button etc.) og en container-komponent (FormContainer), som foreslått i ovennevnte kilde. Å lage dumme komponenter bidrar til god gjenbruk, mens FormContainer kan holde på tilstandene til de ulike komponentene (her input fra brukeren). 
+1. https://canvasjs.com/javascript-charts/bar-chart-axis-scale-break/  For grafisk visning av dataene har vi benyttet oss av canvasjs.com sin bar chart, og modifisert og tilpasset denne til vårt bruk. Her bruker vi REST APIet til å hente frem de aktuelle dataene, i stedet for fikserte datapunkter slik som i eksempelet. 
+2. https://material-ui.com/components/tables/  Tabellen vår har vi basert på tabellkomponenten og tilhørende andre komponenter fra material-ui.com. Dette for å plassere dataene i en tabell, bla mellom de ulike tabellsidene, samt utvide enkelte rader for å vise detaljert informasjon. I tillegg har vi hentet input-komponentene i søkebaren vår fra material-ui, ettersom dette var en tredjepartskomponent som ser bra ut i vårt grensesnitt. Dog er ulempen ved å bruke slike komponenter at vi måtte overkjøre en del stilistiske attributt for å få disse til å passe inn i vår styling. 
+3. https://www.codementor.io/blizzerand/building-forms-using-react-everything-you-need-to-know-iz3eyoq4y  Det brukerstyrte skjemaet vårt er bygd opp ved hjelp av dumme komponenter (Input, Button etc.) og en container-komponent (FormContainer), som foreslått i ovennevnte kilde. Å lage dumme komponenter bidrar til god gjenbruk, mens FormContainer kan holde på tilstandene til de ulike komponentene (her input fra brukeren). 
 
 
 ### Videre utvikling
