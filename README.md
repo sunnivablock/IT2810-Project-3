@@ -1,4 +1,6 @@
 # The Barometer
+**Se prosjektet**: http://it2810-09.idi.ntnu.no/prosjekt3/
+**Se full database**: http://it2810-09.idi.ntnu.no:8000/api/persons
 ## Readme - Prosjekt 3 
 I dette prosjektet har vi laget et barometer som rangerer mannlige kjendiser. 
 
@@ -47,8 +49,7 @@ Det brukerstyrte skjemaet vårt er bygd opp ved hjelp av dumme komponenter (Inpu
 ### Videre utvikling
 Utviklingsprosjekter vil alltid ha potensiale for forbedring, og vi ser flere forbedringspunkt for vårt prosjekt. Eksempelvis ville vi ved videre arbeid lagt inn funksjonalitet for å kontrollere at det ikke legges til duplikater i databasen. I tillegg ville vi håndtert en bug som gjør at man ikke automatisk sendes tilbake til første side i tabellen ved endring i søk. 
 
-**Se prosjektet**: http://it2810-09.idi.ntnu.no/prosjekt3/
-**Se full database**: http://it2810-09.idi.ntnu.no:8000/api/persons
+
 
 ## For å kjøre prosjektet:
 Stå i mappen du vil ha prosjektet i og kjør følgende kommandoer
