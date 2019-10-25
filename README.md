@@ -6,7 +6,7 @@ Nettsiden består av fire hoveddeler: Et søkefelt, en tabell med data, et skjem
 
 I søkefeltet kan man søke på opptil fire attributter, samt filtrere og sortere personene i databasen på ønsket attributt og rekkefølge. Søk og/eller sortering vises ved å trykke på “apply”-knappen, og for å vise alle dataene igjen, trykker man på “show all”. Det er også en tabell for visning av dataene med mulighet for å bla mellom flere sider ved store resultatsett, velge antall elementer per side, samt se flere detaljer om hvert av objektene i databasen ved å trykke på navnet deres. Videre er det et brukerstyrt skjema (med egnet validering), der brukeren selv kan legge til nye personer, og gi de egen rangering. Det kan ikke postes før alle feltene er fylt ut. Disse dataene lagres i databasen, og vises med en gang i tabellen. Sist er det også en grafisk visning av de tre topprangerte kjendisene, som fortløpende oppdateres ved endringer blant objektene med høyest rangering i databasen.
 
-###Teknologi
+### Teknologi
 Vi har valgt å lage vår applikasjon med MERN-stacken, med mongodb som database, express.js og node.js for server og routing (back-end), og React som front-end-løsning. Under har vi argumentert for de valgene for teknologi vi har implementert. 
 
 **React**: Vi har i større grad enn tidligere valgt å bruke funksjonelle komponenter, da det ikke alltid har vært nødvendig med klasser; eksempelvis table.js. Det forenkler koden vår og gjør den i praksis kortere enn ved unødvendig opprettelse av klasser i React. Vi har i tillegg valgt å lage flere dumme komponenter, så vi kan gjenbruke disse flere steder i koden vår i andre komponenter. 
@@ -19,23 +19,23 @@ Dette er noe vi aktivt bruker frontend for å filtrere og søke gjennom tabellen
 
 **Redux:**For å sikre en applikasjon som oppfører seg konsistent, og som lett kan aksessere state på tvers av klasser, har vi valgt å bruke redux. Vi lagrer eksempelvis data som er fetchet fra databasen i redux, dette gjør at vi lett kan hente ut og bruke dette både i table og graphContainer. I redux lagres all state i store - og vi skriver aldri direkte til state, vi lager heller et nytt objekt som endrer state. Dette er en veldig ryddig måte å håndtere state på.
 
-###CI
+### CI
 I dette prosjektet har vi valgt å innføre CI, slik at vi får en automatisert build ved hver commit til master. Dette ble satt opp med GitLab sitt integrerte CI-verktøy, som pipeliner siste commit til master. Da kjøres automatisk build og deploy, og gir tilbakemelding på om oppsettet ble vellykket. 
 
-###Responsivitet
+### Responsivitet
 Selv om dette ikke var et eksplisitt krav i dette prosjektet, har vi gjort nettsiden vår responsiv slik at den på en pen og fornuftig måte skalerer ved endring av nettsidens dimensjoner. Dette er testet på tre forskjellige enheter (en PC, et nettbrett og en iPhone 8+), i horisontal og vertikal visning. Jf. kravene fra forrige prosjekt, er det innført media queries, viewport, bilder som skalerer og flytende layout. 
 
-###Testing
+### Testing
 For både ende-til-ende-testing og enhetstesting har vi benyttet oss av Cypress, et Javascript testrammeverk. Det er enkelt å installere og bruke. Cypress åpnes og kjøres fra root i prosjektmappen med kommandoen ./node_modules/.bin/cypress open. Disse må kjøres på localhost. Når Cypress launches, kan alle de individuelle testene kjøres herfra. Vi har skrevet tester for å sjekke hovedfunksjonaliteten på siden vår. Både table og graphChart er laget ut fra importerte komponenter, og det er derfor noe trøblete å kalle på feltene i disse komponentene. Vi tror likevel vi kom frem til en grei løsning for dette. Disse ligger under Cypress - integration. Disse ligger under Cypress - integration. 
 
 Vi har også denne gangen brukt Jest som testverkøty. Her har vi laget testmetoder for å teste actorsReducer, i reducer-klassen, for å sjekke at den håndterer ulike actions. Da reducere inneholder initialstate og en switch som skal endre applikasjonens state ved ulike actions definert av oss, er det er viktig å vite at de fungerer som de skal. 
 
-###Bruk av GIT/Koding
+### Bruk av GIT/Koding
 Vi har benyttet oss av git gjennom hele utviklingsprosessen. Vi har delt inn utviklingen i issues på GitLab, og issues inn i mindre tasks der det har vært hensiktsmessig. Issues har i stor grad bidratt til at vi har holdt god oversikt over utviklingen underveis, og vet hva som foreligger av arbeid. I tillegg har issues blitt assignet til de ulike gruppemedlemmene. Ved commits har disse blitt merket med hvilken issue de enten løser eller bidrar til. Det branches alltid ut ved nye versjoner, og versjonskontroll er overholdt. Øvrige git-konvensjoner har også forsøkt blitt opprettholdt (herunder språk). 
 
 Vi har hatt som mål å følge de ulike konvensjonene som gjelder for de ulike teknologiene vi har benyttet oss av, og har i tillegg forsøkt å holde koden ryddig og mest mulig lettleselig. Kommentarer er også lagt inn for å forklare kode der det har føltes nødvendig. 
 
-###Ressurser og tredjepartskomponenter
+### Ressurser og tredjepartskomponenter
 https://canvasjs.com/javascript-charts/bar-chart-axis-scale-break/
 For grafisk visning av dataene har vi benyttet oss av canvasjs.com sin bar chart, og modifisert og tilpasset denne til vårt bruk. Her bruker vi REST APIet til å hente frem de aktuelle dataene, i stedet for fikserte datapunkter slik som i eksempelet. 
 https://material-ui.com/components/tables/
@@ -44,13 +44,13 @@ https://www.codementor.io/blizzerand/building-forms-using-react-everything-you-n
 Det brukerstyrte skjemaet vårt er bygd opp ved hjelp av dumme komponenter (Input, Button etc.) og en container-komponent (FormContainer), som foreslått i ovennevnte kilde. Å lage dumme komponenter bidrar til god gjenbruk, mens FormContainer kan holde på tilstandene til de ulike komponentene (her input fra brukeren). 
 
 
-###Videre utvikling
+### Videre utvikling
 Utviklingsprosjekter vil alltid ha potensiale for forbedring, og vi ser flere forbedringspunkt for vårt prosjekt. Eksempelvis ville vi ved videre arbeid lagt inn funksjonalitet for å kontrollere at det ikke legges til duplikater i databasen. I tillegg ville vi håndtert en bug som gjør at man ikke automatisk sendes tilbake til første side i tabellen ved endring i søk. 
 
 **Se prosjektet**: http://it2810-09.idi.ntnu.no/prosjekt3/
 **Se full database**: http://it2810-09.idi.ntnu.no:8000/api/persons
 
-##For å kjøre prosjektet:
+## For å kjøre prosjektet:
 Stå i mappen du vil ha prosjektet i og kjør følgende kommandoer
 1. git clone https://gitlab.stud.idi.ntnu.no/IT2810-H19/teams/team-9/webprosjekt3.git
 2. npm install
