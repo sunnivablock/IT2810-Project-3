@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/prosjekt3/static/css/main.4d496fed.chunk.css",
+    "main.js": "/prosjekt3/static/js/main.ea8c687c.chunk.js",
+    "main.js.map": "/prosjekt3/static/js/main.ea8c687c.chunk.js.map",
+    "runtime-main.js": "/prosjekt3/static/js/runtime-main.f012d5cc.js",
+    "runtime-main.js.map": "/prosjekt3/static/js/runtime-main.f012d5cc.js.map",
+    "static/js/2.cf5d885c.chunk.js": "/prosjekt3/static/js/2.cf5d885c.chunk.js",
+    "static/js/2.cf5d885c.chunk.js.map": "/prosjekt3/static/js/2.cf5d885c.chunk.js.map",
+    "index.html": "/prosjekt3/index.html",
+    "precache-manifest.574a6f84308131a1b9837e3a49a6b31e.js": "/prosjekt3/precache-manifest.574a6f84308131a1b9837e3a49a6b31e.js",
+    "service-worker.js": "/prosjekt3/service-worker.js",
+    "static/css/main.4d496fed.chunk.css.map": "/prosjekt3/static/css/main.4d496fed.chunk.css.map",
+    "static/media/brad.png": "/prosjekt3/static/media/brad.e679304d.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f012d5cc.js",
+    "static/js/2.cf5d885c.chunk.js",
+    "static/css/main.4d496fed.chunk.css",
+    "static/js/main.ea8c687c.chunk.js"
+  ]
+}

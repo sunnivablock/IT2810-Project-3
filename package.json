@@ -2,6 +2,7 @@
   "name": "webprosjekt3",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://it2810-09.idi.ntnu.no/prosjekt3",
   "dependencies": {
     "@material-ui/core": "^4.5.0",
     "@material-ui/icons": "^4.4.3",
