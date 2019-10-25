@@ -17,7 +17,7 @@ Vi har valgt å lage vår applikasjon med MERN-stacken, med mongodb som database
 Dette gjør at vi kan finne alle med fornavn Chris ved legge til ?firstName=Chris etter lenken for databasen: http://it2810-09.idi.ntnu.no:8000/api/persons?firstName=Chris. Vi kan også legge til filtrerings attributter: http://it2810-09.idi.ntnu.no:8000/api/persons?firstName=Chris&sort=lastName&sortAsc=True
 Dette er noe vi aktivt bruker frontend for å filtrere og søke gjennom tabellen vår, og for å finne de tre personene med høyest rating.
 
-**Redux:**For å sikre en applikasjon som oppfører seg konsistent, og som lett kan aksessere state på tvers av klasser, har vi valgt å bruke redux. Vi lagrer eksempelvis data som er fetchet fra databasen i redux, dette gjør at vi lett kan hente ut og bruke dette både i table og graphContainer. I redux lagres all state i store - og vi skriver aldri direkte til state, vi lager heller et nytt objekt som endrer state. Dette er en veldig ryddig måte å håndtere state på.
+**Redux**:For å sikre en applikasjon som oppfører seg konsistent, og som lett kan aksessere state på tvers av klasser, har vi valgt å bruke redux. Vi lagrer eksempelvis data som er fetchet fra databasen i redux, dette gjør at vi lett kan hente ut og bruke dette både i table og graphContainer. I redux lagres all state i store - og vi skriver aldri direkte til state, vi lager heller et nytt objekt som endrer state. Dette er en veldig ryddig måte å håndtere state på.
 
 ### CI
 I dette prosjektet har vi valgt å innføre CI, slik at vi får en automatisert build ved hver commit til master. Dette ble satt opp med GitLab sitt integrerte CI-verktøy, som pipeliner siste commit til master. Da kjøres automatisk build og deploy, og gir tilbakemelding på om oppsettet ble vellykket. 
@@ -52,7 +52,7 @@ Utviklingsprosjekter vil alltid ha potensiale for forbedring, og vi ser flere fo
 
 ## For å kjøre prosjektet:
 Stå i mappen du vil ha prosjektet i og kjør følgende kommandoer
-1. git clone https://gitlab.stud.idi.ntnu.no/IT2810-H19/teams/team-9/webprosjekt3.git
+1. '<git clone https://gitlab.stud.idi.ntnu.no/IT2810-H19/teams/team-9/webprosjekt3.git >'
 2. npm install
 3. npm start
 3. Siden skal automatisk kjøre i nettleser med url http://localhost:3000/ 
