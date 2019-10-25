@@ -12,7 +12,7 @@ class Header extends Component{
         return (
         <div className='Header'>
             <img src={brad} className="App-logo" alt="logo" />
-            <span className="firstHeader">BAROMETERET</span>
+            <span className="firstHeader">THE BAROMETER</span>
             <img src={brad} className="App-logo" alt="logo" />
         </div>
         );

@@ -11,7 +11,6 @@ import {getActorsError, getActorsPending} from './reducers/reducer'
 import FormContainer from './components/FormContainer'
 import GraphContainer from './components/graphChart/GraphContainer'
 import fetchTopActorsAction from './components/fetchTopActors'
-
 import Search from './components/search'
 import Button from './components/Button';
 
@@ -21,6 +20,7 @@ class App extends Component {
     super(props);
     this.shouldComponentRender=this.shouldComponentRender.bind(this);
     this.handleButtonClick = this.handleButtonClick.bind(this);
+    this.handleButtonClickClear = this.handleButtonClickClear.bind(this);
     this.fire= this.fire.bind(this);
     this.state = {
       values:{
@@ -59,6 +59,7 @@ class App extends Component {
   fire() {
     const {fetchActors}=this.props;
     fetchActors(this.generateURLQuery())
+
   }
 
    handleButtonClick() {
@@ -67,6 +68,13 @@ class App extends Component {
         rating:parseInt(this.props.values.Rating), Sorting:this.props.values.Sorting,
         SortDirection:this.props.values.SortDirection}},this.fire)
    }
+
+   handleButtonClickClear() {
+    this.setState({values:{firstName: "", 
+      lastName:"", year:"",
+      rating:"", Sorting:"firstName",
+      SortDirection:"asc"}},this.fire)
+ }
 
   render() {
     const { error} = this.props;
@@ -86,6 +94,13 @@ class App extends Component {
                         id={'applyButton'}
                         type = {'button' }
                         action={this.handleButtonClick}
+                        className = {'applyButton'}
+                      />
+                      <Button 
+                        title = {"SHOW ALL"}
+                        id={'showButton'}
+                        type = {'button' }
+                        action={this.handleButtonClickClear}
                         className = {'applyButton'}
                       />
                     </div> 
