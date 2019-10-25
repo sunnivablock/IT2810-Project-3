@@ -4,7 +4,6 @@ const Person = require('../models/persons');
 var cors = require('cors')
 
 
-
 router.get('/persons', async (req, res, next) => {
 
   const{sort, sortAsc} = req.query
