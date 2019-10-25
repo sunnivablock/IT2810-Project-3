@@ -105,8 +105,7 @@ class Search extends Component {
           {...prevState.values, Sorting: value
           }
         }))
-       
-
+      
            let object = {
             Rating: this.props.values.Rating,
             Fornavn: this.props.values.Fornavn,
@@ -135,37 +134,38 @@ class Search extends Component {
            }
         this.props.dispatch(SearchSuccess(object))
        }
-      render() {
+      
+       render() {
       
          return (
           
             <div className="searchContainer">
               <p className='searchHead'>SEARCH FOR PERSON</p>
               <img src={searchLogo} className="search-logo" alt="logo"/>
+                
                 <TextField
                 className={'searchRating'}
                 id="Rating"
                 label="Rating"
                 value={this.state.values.rating}
-                className="searchField"
                 onChange={this.handleRating}
                 margin="normal"
                 />
+
                 <TextField
                 className={'searchFirstName'}
                 id="Fornavn"
                 label="First name"
                 value={this.state.values.firstName}
-                className="searchField"
                 onChange={this.handleFirstName}
                 margin="normal"
                 />
+
                 <TextField
                 className={'searchLastName'}
                 id="Etternavn"
                 label="Last name"
                 value={this.state.values.lastName}
-                className="searchField"
                 onChange={this.handleLastName}
                 margin="normal"
                 />
@@ -175,9 +175,9 @@ class Search extends Component {
                 id="Født"
                 label="Birth year"
                 value={this.state.values.year}
-                className="searchField"
                 onChange={this.handleYear}
-                margin="normal"/>
+                margin="normal"
+                />
                 
                 <div className='dropDown'>
                   <Select 

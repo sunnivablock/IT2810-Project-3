@@ -66,16 +66,16 @@ export default function EnhancedTable() {
  
   function evaluateRating(rating){
     if(rating<30){
-        return("This person is rated as below average");
+        return(" is rated as below average");
     }
-    else if(29<rating<70){
-        return("This person is rated as average");
+    else if(rating>29 && rating<65){
+        return(" is rated as average");
     }
-    else if(69<rating<90){
-        return("This person is rated as pretty good looking");
+    else if(rating>64 && rating<89){
+        return(" is rated as pretty good looking");
     }
     else{
-        return("This person is rated as really damn hot");
+        return(" is rated as really damn hot");
     }
   }
 
@@ -97,7 +97,7 @@ export default function EnhancedTable() {
                       </ExpansionPanelSummary>
                       <ExpansionPanelDetails>
                         <Typography>
-                        Mr. {row.etternavn} was born in {row.fodt}. He has chosen the profession of {row.yrke.toLowerCase()}. {evaluateRating(row.digghet)}.
+                        Mr. {row.etternavn} was born in {row.fodt}. He has chosen the profession of {row.yrke.toLowerCase()}. {row.fornavn}{evaluateRating(row.digghet)}.
                         </Typography>
                       </ExpansionPanelDetails>
                     </ExpansionPanel>
@@ -111,7 +111,7 @@ export default function EnhancedTable() {
           </Table>
         </div>
           <TablePagination
-          rowsPerPageOptions={[5, 10, 20]}
+          rowsPerPageOptions={[5, 10, 15]}
           count={getActors().length}
           component="div"
           rowsPerPage={rowsPerPage}

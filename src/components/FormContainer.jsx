@@ -122,7 +122,7 @@ class FormContainer extends Component {
 
 render() {
   const { firstName, lastName, profession, year, rating } = this.state.newPerson;
-  const isEnabled = firstName !=="" && lastName !=="" && profession !=="" && year !=="" && rating !=="";
+  const isEnabled = (firstName !=="" && lastName !=="" && profession !=="" && year !=="" && rating !=="");
   
   return (
       <form className="formContainer">
@@ -191,10 +191,6 @@ render() {
       </form>
   );
 }
-}
-
-const buttonStyle = {
-margin : '20px 5px 5px 5px',
 }
 
 export default FormContainer;
