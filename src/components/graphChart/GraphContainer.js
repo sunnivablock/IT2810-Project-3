@@ -6,7 +6,6 @@ var React = require('react');
 var Component = React.Component;
 
 
-
 class GraphContainer extends Component{
 
 	render() {
@@ -56,7 +55,6 @@ class GraphContainer extends Component{
 			<CanvasJSChart options = {options}
 				onRef={ref => this.chart = ref}
 			/>
-			{/*You can get reference to the chart instance as shown above using onRef. This allows you to access all chart properties and methods*/}
 		</div>
 		);
 	}
