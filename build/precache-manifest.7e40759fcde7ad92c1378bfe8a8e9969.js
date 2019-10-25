@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e2aeb4def98f198ff90f2dd0d7300095",
+    "revision": "11abc8e9ed6c5a8ca8a95b2d4c93c38d",
     "url": "/prosjekt3/index.html"
   },
   {
-    "revision": "3a752a1327d8bd2136ff",
+    "revision": "8291316bf40bc57ddfd3",
     "url": "/prosjekt3/static/css/main.4d496fed.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/prosjekt3/static/js/2.cf5d885c.chunk.js"
   },
   {
-    "revision": "3a752a1327d8bd2136ff",
-    "url": "/prosjekt3/static/js/main.ea8c687c.chunk.js"
+    "revision": "8291316bf40bc57ddfd3",
+    "url": "/prosjekt3/static/js/main.300c0375.chunk.js"
   },
   {
     "revision": "530400ee5ea383dc8c1f",

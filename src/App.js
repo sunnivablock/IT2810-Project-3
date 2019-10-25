@@ -35,7 +35,7 @@ class App extends Component {
   }
 
   generateURLQuery = () => {
-    return "/api/persons?" + ((!this.state.values.firstName) ? '' : `&firstName=${this.state.values.firstName}`)+ 
+    return "http://it2810-09.idi.ntnu.no:8000/api/persons?" + ((!this.state.values.firstName) ? '' : `&firstName=${this.state.values.firstName}`)+ 
         ((!this.state.values.lastName) ? '' : `&lastName=${this.state.values.lastName}`) +
         ((!this.state.values.rating) ? '' : `&rating=${this.state.values.rating}`) +
         ((!this.state.values.year) ? '' : `&year=${this.state.values.year}`)+
@@ -48,7 +48,7 @@ class App extends Component {
     const {fetchActors}=this.props;
     fetchActors(this.generateURLQuery())
     const {fetchTopActors}=this.props;
-    fetchTopActors('/api/persons?sort=rating')
+    fetchTopActors('http://it2810-09.idi.ntnu.no:8000/api/persons?sort=rating')
   }
 
   shouldComponentRender(){
