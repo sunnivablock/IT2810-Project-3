@@ -65,7 +65,7 @@ export default function EnhancedTable() {
   };
  
   function evaluateRating(rating){
-    console.log(rating);
+    console.log("Personen har denne ratingen:"+rating);
     if(rating<30){
         return("This person is rated as below average");
     }
@@ -112,7 +112,7 @@ export default function EnhancedTable() {
           </Table>
         </div>
           <TablePagination
-          rowsPerPageOptions={[5, 10, 20]}
+          rowsPerPageOptions={[5, 10, 15]}
           count={getActors().length}
           component="div"
           rowsPerPage={rowsPerPage}

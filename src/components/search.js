@@ -105,8 +105,7 @@ class Search extends Component {
           {...prevState.values, Sorting: value
           }
         }))
-       
-
+      
            let object = {
             Rating: this.props.values.Rating,
             Fornavn: this.props.values.Fornavn,
@@ -135,7 +134,8 @@ class Search extends Component {
            }
         this.props.dispatch(SearchSuccess(object))
        }
-      render() {
+      
+       render() {
       
          return (
           
