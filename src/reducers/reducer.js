@@ -5,9 +5,9 @@ import {FETCH_ACTORS_PENDING, FETCH_ACTORS_SUCCESS, FETCH_ACTORS_ERROR,
 
 
 const initialState = {
-  pending:false,
-  actors:[],
-  error:null
+    pending:false,
+    actors:[],
+    error:null
   }
   const initialStateSearch = {
     pending:false,

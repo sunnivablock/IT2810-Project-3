@@ -193,7 +193,7 @@ class Search extends Component {
                   name={'SortDirection'}
                   id={"SortDirection"}
                   className={"custom-select"}
-                  options = {["asc","desc"]} 
+                  options = {["ascending","descending"]} 
                   value = {this.state.values.SortDirection}
                   placeholder = {'DIRECTION'}
                   handleChange = {this.handleSortDirection}
