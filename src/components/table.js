@@ -50,6 +50,9 @@ function HeadOfTable() {
     </TableHead>
   );
 }
+
+
+
 export default function EnhancedTable() {
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
@@ -76,7 +79,6 @@ export default function EnhancedTable() {
     }
     else{
         return(" is rated as really damn hot");
-        console.log("Hot ja..")
     }
   }
 
@@ -130,10 +132,3 @@ export default function EnhancedTable() {
     </div>
   );
 }
-
-// {row.fornavn} is a/an {row.profession}.
-//<TableCell className='rowInTable' align="left" onClick={() => explorePerson(row)} on>{row.fornavn}</TableCell>
-//<TableCell className='rowInTable' align="left" onClick={() => explorePerson(row)}>{row.etternavn}</TableCell>
-
-//Utkommentert funksjon som skal legges inn: 
-//.
