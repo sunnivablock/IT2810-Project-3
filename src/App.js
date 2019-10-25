@@ -40,7 +40,7 @@ class App extends Component {
         ((!this.state.values.rating) ? '' : `&rating=${this.state.values.rating}`) +
         ((!this.state.values.year) ? '' : `&year=${this.state.values.year}`)+
         ((!this.state.values.Sorting) ? '' : `&sort=${this.state.values.Sorting}`)+
-        ((this.state.values.SortDirection === 'asc') ? '&sortAsc=True' : '');
+        ((this.state.values.SortDirection === 'ascending') ? '&sortAsc=True' : '');
         
 };
 
