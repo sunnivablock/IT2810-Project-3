@@ -7,7 +7,7 @@ const url = "mongodb://it2810-09.idi.ntnu.no:27017/Gutta"
 const apiPort = 8000
 var cors = require('cors')
 
-app.use(cors)
+
 //Set up default mongoose connection
 var mongoDB = url;
 mongoose.connect(mongoDB, { useNewUrlParser: true })
