@@ -29,7 +29,7 @@
     "start-watch": "nodemon server.js",
     "cypress:open": "cypress open"
   },
-  "proxy": "http://localhost:8000/",
+  "proxy": "http://it2810-09.idi.ntnu.no:8000/",
   "eslintConfig": {
     "extends": "react-app"
   },

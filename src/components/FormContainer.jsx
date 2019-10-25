@@ -40,7 +40,7 @@ class FormContainer extends Component {
     this.setState( prevState => ({ newPerson : 
          {...prevState.newPerson, firstName: value
          }
-       }), () => console.log(this.state.newPerson))
+       }))
    }
    
    addRatingOptions(){
@@ -56,7 +56,7 @@ class FormContainer extends Component {
     this.setState( prevState => ({ newPerson : 
          {...prevState.newPerson, lastName: value
          }
-       }), () => console.log(this.state.newPerson))
+       }))
    }
    
   handleAge(e) {
@@ -64,7 +64,7 @@ class FormContainer extends Component {
     this.setState( prevState => ({ newPerson : 
         {...prevState.newPerson, year: value
         }
-      }), () => console.log(this.state.newPerson))
+      }))
   }
 
   handleRating(e) {
@@ -72,7 +72,7 @@ class FormContainer extends Component {
     this.setState( prevState => ({ newPerson : 
         {...prevState.newPerson, rating: value
         }
-      }), () => console.log(this.state.newPerson))
+      }))
   }
 
   handleProfession(e) {
@@ -80,7 +80,7 @@ class FormContainer extends Component {
     this.setState( prevState => ({ newPerson : 
         {...prevState.newPerson, profession: value
         }
-      }), () => console.log(this.state.newPerson))
+      }))
   }
 
   handleInput(e) {
@@ -89,13 +89,13 @@ class FormContainer extends Component {
     this.setState( prevState => ({ newPerson : 
       {...prevState.newPerson, [name]: value
       }
-    }), () => console.log(this.state.newPerson))
+    }))
   }
 
   handleFormSubmit = () => {
     let personData = this.state.newPerson;
     console.log(personData)
-    axios.post('http://localhost:8000/api/persons', personData)
+    axios.post('http://it2810-09.idi.ntnu.no:8000/api/persons?', personData)
       .then(response => {
         response.then(data =>{
         console.log("Successful" + data);
