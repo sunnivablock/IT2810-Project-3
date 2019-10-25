@@ -8,7 +8,6 @@ const Button = (props) => {
             onClick = {props.action}
             disabled = {props.disabled}
             id={props.id}>
-            
             {props.title} 
         </button>
     )
