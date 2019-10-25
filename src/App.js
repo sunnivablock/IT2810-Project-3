@@ -29,7 +29,7 @@ class App extends Component {
       lastName: '',
       year: '',
       Sorting:"firstName",
-      SortDirection:"asc"
+      SortDirection:"ascending"
 
   } }
   }
