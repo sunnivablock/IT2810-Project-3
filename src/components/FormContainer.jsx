@@ -150,7 +150,7 @@ render() {
           inputType={'number'} 
           name={'age'}
           className={'ageInput'}
-          title= {'Age '} 
+          title= {'Birth year '} 
           maxLength = {'4'}
           value={this.state.newPerson.age} 
           placeholder = {'1900'}

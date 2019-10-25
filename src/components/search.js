@@ -154,7 +154,7 @@ class Search extends Component {
                 <TextField
                 className={'searchFirstName'}
                 id="Fornavn"
-                label="Fornavn"
+                label="First name"
                 value={this.state.values.firstName}
                 className="searchField"
                 onChange={this.handleFirstName}
@@ -163,7 +163,7 @@ class Search extends Component {
                 <TextField
                 className={'searchLastName'}
                 id="Etternavn"
-                label="Etternavn"
+                label="Last name"
                 value={this.state.values.lastName}
                 className="searchField"
                 onChange={this.handleLastName}
@@ -173,7 +173,7 @@ class Search extends Component {
                 <TextField
                 className={'searchYear'}
                 id="Født"
-                label="Født"
+                label="Birth year"
                 value={this.state.values.year}
                 className="searchField"
                 onChange={this.handleYear}

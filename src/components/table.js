@@ -30,8 +30,7 @@ const headCells = [
   { id: 'rating', numeric: true,  label: 'Rating'},
   { id: 'fornavn', numeric: false,  label: 'First Name'},
   { id: 'etternavn', numeric: false, label: 'Last Name'},
-  { id: 'fodt', numeric: true,  label: 'Year'},
-  
+  { id: 'fodt', numeric: true,  label: 'Birth year'},
 ];
 
 function HeadOfTable() {
@@ -51,10 +50,6 @@ function HeadOfTable() {
     </TableHead>
   );
 }
-
-
-
-
 export default function EnhancedTable() {
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
