@@ -71,5 +71,3 @@ class GraphContainer extends Component{
 } 
 
 export default GraphContainer;
-
-//https://canvasjs.com/docs/charts/chart-options/title/fontcolor/
