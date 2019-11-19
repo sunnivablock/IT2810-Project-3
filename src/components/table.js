@@ -100,7 +100,7 @@ export default function EnhancedTable() {
                       </ExpansionPanelSummary>
                       <ExpansionPanelDetails>
                         <Typography>
-                        Mr. {row.etternavn} was born in {row.fodt}. He has chosen the profession of {row.yrke.toLowerCase()}. {row.fornavn}{evaluateRating(row.digghet)}.
+                        Mr. {row.etternavn} was born in {row.fodt}. He has chosen the profession of {row.yrke}. {row.fornavn}{evaluateRating(row.digghet)}.
                         </Typography>
                       </ExpansionPanelDetails>
                     </ExpansionPanel>
